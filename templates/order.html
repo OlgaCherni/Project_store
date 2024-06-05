@@ -1,0 +1,33 @@
+{% comment %}   {% load static %}    {% endcomment %}                                              <!-- +CSS -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>order</title>
+    <meta charset="utf-8" />
+    {% comment %}    <link rel="stylesheet" href="{% static "CSS/style_order.css" %}" />     {% endcomment %}                     <!-- +CSS -->  
+    <link rel="stylesheet" href="../static/CSS/style_order.css"/>
+</head>
+
+<body>
+
+    <h3>Подтверждение заказа</h3>
+     
+    </div>
+        <form method ="POST"> {% csrf_token %} 
+            <div>
+                <p><b>Введите имя:</b><input type="text" id = "name" size="40" placeholder ="Ваше имя:"></p>
+                <p><b>Введите контактный номер:</b><input type="tel" id = "telephone" size="40" required name = "telephone" placeholder = "+375 (NN) 999-99-99"class = "input-text qty text"></p>
+                <p><b>Введите почту:</b><input type="email" size="40" id = "email" name = "email" placeholder = "example@example.ru" required > </p>
+                <p><b>Введите адрес:</b><input type="text" id = "name" size="40" placeholder ="Адрес:"></p>
+            </div>
+            <div >
+                <button class="order_button" type="button"  data-dismiss="modal" >Закрыть</button>
+                <button class="order_button" type="submit" data-toggle="modal" data-target="#modal_window">Подтвердить</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>
+

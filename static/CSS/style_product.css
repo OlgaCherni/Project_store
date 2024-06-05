@@ -43,8 +43,8 @@ margin-top: 70px;
 
 /* КНОПКИ. Обводка толщиной3,сплошная,синяя. Заливка. Отступ слева. Толщина шрифта. Текст в центре. Закругление. Внутрений отстут от шрифта. Указывающая рука. Без подчеркивания */
 .btn{
-    border: 2px solid rgb(38, 38, 49);      
-    background-color:rgba(117, 123, 207, 0.849);
+    border: 2px solid rgb(11, 11, 87);      
+    background-color: rgba(126, 167, 242, 0.718);
     margin-left: 50px;
     border-radius: 25px;
     font-size: 20px;

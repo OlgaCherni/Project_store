@@ -1,15 +1,9 @@
-{% load static %}                                                                           <!-- +CSS -->
+ <!-- Один продукт -->
+ {% extends "base.html" %}                  <!-- Расширение шаблона(extends). Указываем название базавого, куда отправляем контент -->
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="{% static "CSS/style_product.css" %}" />                         <!-- +CSS --> 
-</head>
-<body>
+ {% load static %}              <!-- +CSS -->
 
-  {% include "header.html" %}                   <!-- встявляем header -->
+ {% block content %}                        <!-- Расширение шаблона(extends) Начало переносимого контента -->
 
     <div class="vitrina">
         <div class="wrapper">
@@ -29,16 +23,9 @@
                 {{tv.description}}
             </div>
         </div>
-
     </div>
 
-    <button class="btn"><a href="{%url 'main' %}">Вернуться в каталог</a></button> 
-
-  {% include "footer.html" %}        <!-- встявляем footer -->
- 
-</body>
-</html>
-
+{% endblock content %}                    <!-- Расширение шаблона(extends) Конец переносимого контента -->
 
 
 

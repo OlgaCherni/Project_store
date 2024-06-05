@@ -1,6 +1,8 @@
  <!-- Все борды -->
 {% extends "base.html" %}                  <!-- Расширение шаблона(extends). Указываем название базавого, куда отправляем контент -->
 
+{% load static %}                <!-- +CSS -->
+
 {% block content %}                        <!-- Расширение шаблона(extends) Начало переносимого контента -->
 
 <div class="wraper">
@@ -10,15 +12,16 @@
         <img class="img" src="{{ item.image.url }}" alt="{{ item.name }}">
         <p class="info" >{{ item.name }}</p>
         <p class="info" >{{ item.price}} руб.</p>
-        <input type="hidden" value="{{item.id}}" name="get_id_produkt">
 
         <form method="POST"> {% csrf_token %}
-          <button class="info btn_buy" type="submit">Добавить в корзину</button>  <br>
+          <input type="hidden" value="{{item.name}}" name="get_id_produkt">
+          <button class="info btn_buy" type="submit">Добавить в корзину  </button>  
+          <input type="number" name="quantity"> <br>
         </form>
       </div>
   </a>
-
   {% endfor %}
+
 </div>
 {% endblock content %}                    <!-- Расширение шаблона(extends) Конец переносимого контента -->
 

@@ -1,0 +1,44 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>basket</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="{% static "CSS/style_basket.css" %}" />   <!-- +CSS -->  
+</head>
+
+<body>
+    <div>   
+        <h2>Корзина.</h2>
+        <h3>Оформление.</h3>
+    </div>
+
+    <div>   
+        <h3>Ваши заказы:</h3>
+        {% for item in products %} 
+           {{ item.product.name }} <br>
+        {% endfor %}
+    </div>
+    
+    
+
+    <form method ="POST"> {% csrf_token %} 
+        <div>
+            <p><label for="comment">Ваш комментарий:</label><br/>
+                <textarea name="comment" id="comment" placeholder="Не более 500 символов" maxlength="500"></textarea> </p>
+        </div>
+
+        <div >
+            <tr> <td><input class="button_cl" type="submit" value="Подтведрить заказ"></td> <td><input type="reset" value="Отмена"></td></tr>
+        </div >
+    </form>
+
+    <div >  
+        <button class="btn"><a href="{%url 'main' %}">В  каталог </a></button> 
+    </div>
+
+
+</body>
+</html>
+

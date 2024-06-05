@@ -9,10 +9,9 @@
             <img class="img" src="{{ item.image.url }}" alt="{{ item.name }}">
             <p class="info" >{{ item.name }}</p>
             <p class="info" >{{ item.price}} руб.</p>
-            <input type="hidden" value="{{item.id}}" name="get_id_produkt">
 
-            <form method="POST">
-              {% csrf_token %}
+            <form method="POST"> {% csrf_token %}
+              <input type="hidden" value="{{item.name}}" name="get_id_produkt">
               <button class="info btn_buy" type="submit">Добавить в корзину</button>  <br>
             </form>
           </div>

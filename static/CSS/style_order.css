@@ -1,0 +1,33 @@
+
+/* Все ссылок черные. без подчеркивания */
+a {
+  color: black;
+  text-decoration: none;
+}
+
+/* ссылки при наведении синеют */
+a:hover {
+  color: #008eb5;
+}
+
+/* ссылки при нажатии берюзовые */
+a:active {
+  color: #00adb8;
+}
+
+/* КНОПКИ. Обводка толщиной3,сплошная,синяя. Заливка. Отступ слева. Толщина шрифта. Текст в центре. Закругление. Внутрений отстут от шрифта. Указывающая рука. Без подчеркивания */
+.btn{
+  border: 2px solid rgb(11, 11, 87);      
+  background-color: rgba(126, 167, 242, 0.718);
+  margin-left: 50px;
+  border-radius: 25px;
+  font-size: 20px;
+  text-align: center;
+  padding: 7px;
+  cursor: pointer; 
+  text-decoration: none;
+}
+
+
+  
+  
