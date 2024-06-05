@@ -1,0 +1,25 @@
+ <!-- Все борды -->
+{% extends "base.html" %}                  <!-- Расширение шаблона(extends). Указываем название базавого, куда отправляем контент -->
+
+{% block content %}                        <!-- Расширение шаблона(extends) Начало переносимого контента -->
+
+<div class="wraper">
+  {% for item in brd %}                      <!-- новая перем перебирает по brd(-ключ из vievs)котовый выводит все отфильтрованные доски из базы данных -->
+  <a href="{% url "prod" item.id %}">        <!-- в ссылке! Путь с странице. Проходясь по циклу. У каждого элемента свой id. -->  
+      <div class="products">
+        <img class="img" src="{{ item.image.url }}" alt="{{ item.name }}">
+        <p class="info" >{{ item.name }}</p>
+        <p class="info" >{{ item.price}} руб.</p>
+        <input type="hidden" value="{{item.id}}" name="get_id_produkt">
+
+        <form method="POST"> {% csrf_token %}
+          <button class="info btn_buy" type="submit">Добавить в корзину</button>  <br>
+        </form>
+      </div>
+  </a>
+
+  {% endfor %}
+</div>
+{% endblock content %}                    <!-- Расширение шаблона(extends) Конец переносимого контента -->
+
+

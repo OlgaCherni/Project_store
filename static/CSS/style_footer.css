@@ -1,0 +1,124 @@
+/* Footer оформлен с помощью Flexbox этот метод верстки хорошо применять для одномерных макетов со строками или столбцами (по горизонтали и вертикали )    ?? position: fixed;right: 0; bottom: 0;*/
+/* Футер Класс Контейнер строки в столбцы. Элементы идут по вертикали сеткой row wrap. Внутренний отступ. Внешний отступ по часовой или парами.Цвет шрифта.Заливка. Борт сверху серый.Занимать 100% текущей ширины области просмотра. Расти 1*/
+.footer_container {
+    display: flex;
+    flex-flow: row wrap;
+    padding: 30px 30px 20px 30px;
+    margin-top: 100px;
+    margin-left: -10px;
+    margin-right: -10px;
+    color: #2f2f2f;
+    background-color: #eeeeee;
+    border-top: 1px solid #c1bfbf;
+    flex:  1 100%;
+    box-shadow: 5px -10px 10px 3px rgba(53, 53, 53, 0.2);   /*   Тень в футере <сдвиг по x> <сдвиг по y> <радиус размытия> <цвет>);  */
+}
+
+/* Имя сайта шрифт ширина размер  */
+.storename {
+    font-family: 'Pacifico', cursive;
+    font-weight: 20px;
+    font-size: 1.5rem;
+}
+
+/* К имени сайта отсуп справи и снизу */
+.logo {
+    margin-right: 5%;
+    margin-bottom: 1%;
+}
+
+/* В логотике картинка */
+.logo img {
+    margin-top: 1.3em;
+    font-size: 15px;
+    font-weight: 100;
+}
+
+ /*! Одинаковое для всех элементов(столбцов) */ 
+.flex-item {
+    margin: 5px 2% 5px 2%; 
+    width: 15%;
+}
+
+ /*! Индивидуальное в столбцах */ 
+.item-1 {
+    font-family:"Times New Roman", Times, serif;
+}
+.item-2 {
+    font-family:"Times New Roman", Times, serif;  
+}
+
+.item-3 {
+    font-family:"Times New Roman", Times, serif; 
+}
+
+.item-4 {
+    border: 1px  dashed grey;
+}
+
+ 
+/* Спикок маркерованый без маркера */  
+.footer_container ul {
+    list-style: none;
+    padding-left: 0;
+}
+ 
+/* Элементы списка */  
+.footer_container li {
+    line-height: 2em;
+}
+
+/* Элеметы списков(время работы)  серые */ 
+li {
+    color: #999;
+}
+
+/* Элеметы списков(все ссылки) серые.без подчеркивания */ 
+a {
+    color: #999;
+    text-decoration: none;
+}
+
+/* Элеметы с имейлом */ 
+.element_one {
+    margin-left: auto;
+    margin-right: auto;
+    color: #999;
+}
+
+/* Иконки соцсетей */
+.media-links {
+    width: 20%; /* Ширина области */
+}
+
+/* Кнопка с имейлом.Блок.Высота блока.Текст в центре. Растянут от центра.Залика.Закруглен.Внутренный отступ от токста по сторонам 1 */   
+.btn_one {
+    display: flex;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(33, 33, 33, 0.07);
+    border-radius: 100px;
+    color: #2f2f2f;
+    padding: 0 1em;
+}
+
+
+
+/*  Есть уже некоторые элементы */
+/*  Цвет ссылок. Без подчеркивания */
+a {
+    color: rgb(50, 50, 50);
+    text-decoration: none;
+  }
+  
+  /* ссылки при наведении синеют */
+  a:hover {
+    color: #03799a;
+  }
+  
+  /* ссылки при нажатии берюзовые */
+  a:active {
+    color: #00adb8;
+  }
+

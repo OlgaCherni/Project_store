@@ -1,0 +1,46 @@
+{% load static %}                                                                           <!-- +CSS -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="{% static "CSS/style_product.css" %}" />                         <!-- +CSS --> 
+</head>
+<body>
+
+  {% include "header.html" %}                   <!-- встявляем header -->
+
+    <div class="vitrina">
+        <div class="wrapper">
+            <div class="name_one">
+                {{tv.name}}                    <!-- Вьюха функция ОДИН ПРОДУКТ. из моделей имя, инфо, цена... -->
+                <div>
+                    Цена: {{tv.price}} руб.
+                </div>
+            </div>
+
+            <div class="izdelie">
+                <img class="filter_img" src="{{tv.image.url}}" alt="">
+
+            </div>
+
+            <div class="name_two">
+                {{tv.description}}
+            </div>
+        </div>
+
+    </div>
+
+    <button class="btn"><a href="{%url 'main' %}">Вернуться в каталог</a></button> 
+
+  {% include "footer.html" %}        <!-- встявляем footer -->
+ 
+</body>
+</html>
+
+
+
+
+
+

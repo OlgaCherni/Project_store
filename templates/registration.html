@@ -1,0 +1,66 @@
+{% load static %}                                                            <!-- +CSS -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "CSS/style_registration.css" %}" />       <!-- +CSS -->
+    <title>registration</title>
+</head>
+<body>
+    <div class="container_fon">
+        <img class="fon" src={% static "media\name01.png" %} alt>
+    </div>
+
+    <main>
+        <div class="container_main">
+            <div class="container_title">
+                <div class="title">
+                    Регистрация
+                </div>
+            </div>
+
+        <div class="container_form">
+            <form method="post">
+            {% csrf_token %}
+
+                <div class="input_">
+                    <label id="icon" for="name"> &#9786; </label>
+                    <!-- <input type="text" name="name" id="name" placeholder="Введите имя" required />  -->
+                    {{key.name}}
+                </div>
+
+                <div class="input_">
+                    <label id="icon" for="name"> &#9990; </label>
+                    <!-- <input type="number" name="name" id="name" placeholder="Телефон" required />  -->
+                    {{key.second_name}}
+                </div>
+
+                <div class="input_">
+                    <label id="icon" for="name"> &#9993; </label>
+                    <!-- <input type="text" name="name" id="name" placeholder="E-mail" required /> -->
+                    {{key.email}}    
+                </div>
+
+                <div class="input_">
+                    <label id="icon" for="name"> &#10004; </label>
+                    <!-- <input type="password" name="name" id="name" placeholder="Пароль" required /> -->  
+                    {{key.password}}
+                </div>
+
+        </div>
+
+                <div>
+                    <p style="font-size: 15px;", style="text-align:right;">Отправляя данную форму вы соглашаетесь с <a href="https://imotech.ru/policy">политикой конфиденциальности</a>.</p> <!-- +- -->
+                </div>
+
+                <div class="container_btn"> 
+                    <button class="btn" name="yes"><a href="{% url 'login' %}">Войти</a></button>   <button class="btn" name="yes" type="submit">Зарегистрироваться</button>
+                </div>
+
+            </form>
+        </div>  
+    </main>
+</body>
+</html>

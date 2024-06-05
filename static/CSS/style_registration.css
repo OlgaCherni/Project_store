@@ -1,0 +1,107 @@
+/* К каждомуэлементу.Внешний и внутренний отступы нулевые. При border-box значения width/height задают высоту/ширину всего элемента. Цвет шрифта. Шрифт,замена, семейство. */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: aliceblue;
+    font-family: "Times New Roman", Georgia, Serif;
+}
+
+body{
+    max-width: 2560px;
+    overflow: hidden;           /* +-. экран не листается */
+}
+
+.container_fon{
+    width: 100%;
+}
+
+/* Абсолютное позиционирование-вырван из потока. Ширина на весь экран. Слой под основным.  */
+.fon{
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+}
+
+/* Весь блок прямоуголькик с текстом и формой, с отступом от верха экрана в 10%  */
+main{
+    padding-top: 10%;
+
+}
+
+/* Прямоугольник с содержимым.Внешний отступ всего прямоегольника низ верх 0, лево право авто-поцентру.Граница толщиной3,сплошная,голубая.Прозрачность.Слой наверх. Прямоуголтник закругленный. */
+.container_main{
+    margin: 10px auto;
+    border: 3px solid rgb(0, 87, 250);
+    backdrop-filter: blur(10px);
+    z-index: 1;
+    max-width: 750px;
+    height: 460px;
+    border-radius: 50px;
+}
+
+/* Текс внутри прямоугольного блока. отступ сверху */
+.container_title{
+    padding-top: 10px;  
+}
+
+/* Слово Регистрация */
+.title{
+    font-size: 40px;
+    text-align: center;
+}
+
+/* Вся форма, кроме слова Регистрация.Оступ сверху блока. Каждый элемент занимает место в контейнере. Блоки стоят по центру главной (горизонтальной) оси. */
+.container_form{
+    padding-block: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* значки спецсимволов рядом со строкой ввода, через id=icon */
+#icon{
+    font-size: 30px;
+}
+
+ /* Все поля ввода. Отступы между полями. */
+.input_{
+    padding-block: 10px;
+}
+
+ /* Поля ввода. Размер шрифта. Выравнивание. Прозрачный бекграунд фон наследуем. Граница толщина2,спложная голубая.Закругленная. Растояние сверху блока 5или% */
+input{
+    font-size: 30px;
+    text-align: center;
+    background-color: inherit;
+    border: 2px solid rgb(0, 87, 250);
+    border-radius: 30px;
+}
+
+/* Нижние кнопки. Элементы в контейнере. Выровняли контент по центру. верхний отстут 20 */
+.container_btn{
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+/* Цвет шрифта плейсхолдера подсказки с полях ввода */
+::placeholder {
+    color: rgb(23, 69, 154);              
+ }
+
+ /* Книпка. Обводка толщиной3,сплошная,синяя. Заливка голубая.Толщина шрифта. Закругление. Внутрений отстут от шрифта 9.  Отступ слева. Указывающая рука.*/
+.btn{
+    border: 3px solid rgb(0, 87, 250);      
+    background-color:rgba(26, 136, 232, 0.849);
+    border-radius: 30px;
+    font-size: 20px;
+    padding: 9px;
+    margin-left: 30px; 
+    cursor: pointer; 
+}
+
+
+/* При навидении кнока синяя */
+.btn:hover{
+    background-color: blue;
+}

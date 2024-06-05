@@ -1,0 +1,51 @@
+{% load static %}                                                                           <!-- +CSS -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "CSS/style_registration.css" %}" />                         <!-- +CSS -->
+    <title>Log_in</title>
+</head>
+<body>
+    <div class="container_fon">
+        <img class="fon" src={% static "media\name01.png" %} alt>
+    </div>
+
+    <main>
+        <div class="container_main">
+            <div class="container_title">
+                <div class="title">
+                    Авторизация
+                </div>
+            </div>
+            <div class="container_form">
+                <form method="post">
+                {% csrf_token %}
+
+                    <div class="input_">
+                        <label id="icon" for="name"> &#9993; </label>
+                        <!-- <input type="text" name="name" id="name" placeholder="E-mail" required /> -->
+                        {{key.email}}    
+                    </div>
+
+                    <div class="input_">
+                        <label id="icon" for="name"> &#10004; </label>
+                        <!-- <input type="password" name="name" id="name" placeholder="Пароль" required /> -->  
+                        {{key.password}}
+                    </div>
+                </div>
+
+                <div>
+                    <button class="btn" name="yes" type="submit">Войти</button>
+                    <button class="btn"><a href="{% url "registr" %}">Перейти к регистрации</button>
+                    <button class="btn"><a href="{% url 'main' %}">К каталогу сайта</a></button>  
+                </div>
+
+            </form>
+        </div>  
+    </main>
+</body>
+</html>
+
+                                                         

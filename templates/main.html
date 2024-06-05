@@ -1,0 +1,25 @@
+{% extends "base.html" %}                             <!-- Расширение шаблона(extends). Указываем название базавого, куда отправляем контент -->
+
+{% load static %}                                     <!-- +CSS -->
+
+{% block content %}
+    <div class="fir">
+        <div class="fir_wrapper">
+            <div class="fir_imgs">
+                <img class="fir_imgs" src="..\static\media\first.png" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div class="grid-container">
+        <div class="grid-item item1"> <a href="{%url 'boards'%}">Сноуборды<img class="imgs" src="..\static\media\f1.png"  alt="Сноуборд"></a></div>      <!--  src="{% static 'media\f1.png' %} -->
+        <div class="grid-item item2"> <a href="{%url 'skis' %}">Лыжи <img class="imgs" src="..\static\media\f2.png"  alt="Лыжи"></a></div>
+        <div class="grid-item item3"> <a href="{%url 'accessories' %}">Аксессуары<img class="imgs" src="..\static\media\f3.png"  alt="Аксессуары"></a></div>
+    </div>
+    
+{% endblock content %}
+
+
+
+
+

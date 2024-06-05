@@ -1,0 +1,56 @@
+/*   HTML один product */
+
+body {
+margin-top: 70px;
+}
+
+.vitrina{
+    max-width: 100%;
+    margin: 20px auto;
+    height: 500px;
+}
+
+
+.wrapper{
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+}
+
+
+.name_one {
+    font-size: 25px;
+    padding-block: 20px;
+}
+
+
+.name_two {
+    font-size: 30px;
+    padding-block: 20px;
+}
+
+
+.filter_img{
+    width: 300px;
+}
+
+
+.izdelie{
+    float: left; /* Выравнивание по правому краю  */ 
+    margin: 7px 0 7px 7px; /* Отступы вокруг картинки */
+    text-align: center;
+}
+
+/* КНОПКИ. Обводка толщиной3,сплошная,синяя. Заливка. Отступ слева. Толщина шрифта. Текст в центре. Закругление. Внутрений отстут от шрифта. Указывающая рука. Без подчеркивания */
+.btn{
+    border: 2px solid rgb(38, 38, 49);      
+    background-color:rgba(117, 123, 207, 0.849);
+    margin-left: 50px;
+    border-radius: 25px;
+    font-size: 20px;
+    text-align: center;
+    padding: 7px;
+    cursor: pointer; 
+    text-decoration: none;
+}
+

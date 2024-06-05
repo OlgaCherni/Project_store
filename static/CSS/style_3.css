@@ -1,0 +1,94 @@
+/* Фоновое изображение неподвижно fixed/scroll. Фон. Высота. font-family: "Raleway", Helvetica, Arial, sans-serif; */
+body{
+    background-attachment: fixed;
+    background-color: rgb(219, 218, 249); 
+    height: 100%;
+    margin-top: 50px;
+    font-family: "Times New Roman", Georgia, Serif; 
+
+}
+
+/*  В линию таблицей. Ширина высота блока. Отступ от каждого блока.Фот в блоке.Цвет шрифта.Закруглен. Тень. Отступы внутри. */
+.products{
+    display: inline-table;
+    width: 400px;
+    height: 400px;
+    margin-top: 30px;
+    margin-left: 40px;
+    background-color: aliceblue;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(70, 56, 56, 0.5);
+    padding: 10px;
+}
+
+/* Картинки. Три строки выравнивают поцентру. Сверху отступ 10. Высота картинки. Тень: право низ размытие цвет.. */ 
+.img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10px;
+    height: 350px;
+    box-shadow: 15px 10px 8px  rgb(53, 52, 65); 
+}
+
+/* Текст в блоке */ 
+.info{
+    margin-top: 10px;
+    text-align: center;
+    font-size: larger;
+    font:bold;
+}
+
+/* КНОПКИ. Обводка толщиной3,сплошная,синяя. Заливка. Отступ слева. Толщина шрифта. Текст в центре. Закругление. Внутрений отстут от шрифта. Указывающая рука. Без подчеркивания */
+.btn{
+    margin-top: 30px;
+    border: 2px solid rgb(38, 38, 49);      
+    background-color:rgba(117, 123, 207, 0.849);
+    margin-left: 50px;
+    border-radius: 25px;
+    font-size: 20px;
+    text-align: center;
+    padding: 7px;
+    cursor: pointer; 
+    text-decoration: none;
+}
+
+/* КНОПКA КУПИТЬ Классы, псевдоклассы- аптивная, после нашатия  */
+.btn_buy {
+	background-color:#73a442;
+	padding:7px;
+	position:relative;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 12 px;
+	text-decoration:none;
+	color:#084417;
+	background-image: linear-gradient(bottom, rgb(76, 124, 28) 0%, rgb(129,212,51) 100%);
+	box-shadow: inset 0px 1px 0px #b2f17f, 0px 6px 0px #3d6f0d;
+	border-radius: 5px;
+}
+.btn:active {
+	top:7px;
+	background-image: linear-gradient(bottom, rgb(100,170,30) 100%, rgb(129,212,51) 0%);
+	box-shadow: inset 0px 1px 0px #b2f17f, inset 0px -1px 0px #3d6f0d;
+	color: #156785;
+	text-shadow: 0px 1px 1px rgba(255,255,255,0.3);
+	background: rgba(255, 247, 3, 0.712);
+}
+.btn::before {
+	content:"";
+	display:block;
+	position:absolute;
+	width:100%;
+	height:100%;
+	padding-left:2px;
+	padding-right:2px;
+	padding-bottom:4px;
+	left:-2px;
+	top:5px;
+	z-index:-1;
+	border-radius: 6px;
+	box-shadow: 0px 1px 0px #fff;
+}
+.btn:active::before {
+	top:-2px;
+}
