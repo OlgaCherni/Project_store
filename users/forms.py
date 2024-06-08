@@ -3,7 +3,6 @@ from django import forms
 from django.contrib.auth.models import User # !
 
 
-
 class FormRegistration(forms.Form):                                                          
     name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Имя'}))                              
     second_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Фамилия'}))

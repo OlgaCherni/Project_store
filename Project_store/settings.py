@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-%7ade9cvm*45d9s6q3ux7eie%suibc0=&08z6da^)hfe9u+3j1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True     # в прод False
 
 ALLOWED_HOSTS = []
 
@@ -122,7 +122,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [                                         #  тк статик на уровне с проектом+импорт os сверху                                   
-    os.path.join(BASE_DIR, 'static')]                        #  
+    os.path.join(BASE_DIR, 'static')]                        #  статика в корне  
 
 
 # Default primary key field type

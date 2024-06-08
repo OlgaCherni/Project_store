@@ -1,21 +1,33 @@
+ <!-- Все аксессуары -->
+
 {% extends "base.html" %}       <!-- Расширение шаблона(extends). Указываем название базавого, куда отправляем контент -->
+
+{% load static %}                           <!-- +CSS -->
 
 {% block content %}             
     <div class="wraper">
+
       {% for item in acs %}
       <a href="{% url "prod" item.id %}">
           <div class="products">
             <img class="img" src="{{ item.image.url }}" alt="{{ item.name }}">
+            <p class="info" >{{ item.сategories }}</p>
             <p class="info" >{{ item.name }}</p>
-            <p class="info" >{{ item.price}} руб.</p>
+            <p class="info" >Цена: {{ item.price}} руб.</p>
+            <p class="info" >В наличии: {{ item.is_active}}</p>
 
             <form method="POST"> {% csrf_token %}
               <input type="hidden" value="{{item.name}}" name="get_id_produkt">
               <button class="info btn_buy" type="submit">Добавить в корзину</button>  <br>
+              <input type="number" name="quantity" min="10" max="100" placeholder="1"> <br> 
             </form>
           </div>
-      </a>
+        </a>
       {% endfor %}
-    </div>
+      <div>
+        <button class="btn"><a href="{%url 'main' %}">В каталог</a></button>
+      </div> 
+  
+  </div>
 
 {% endblock content %}   

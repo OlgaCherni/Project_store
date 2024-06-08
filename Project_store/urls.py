@@ -27,9 +27,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),                                     
 
     path("", shop.index, name="main"),                                   # Каталог(борд,лыжы,аксессуары)
-    path("board", shop.boards, name="boards"),                           # Борды
-    path("ski", shop.skis, name="skis"),                                 # Лыжи
-    path("accessorie", shop.accessories, name="accessories"),            # Аксессуары
+    path("boards", shop.boards, name="boards"),                           # Борды
+    path("skis", shop.skis, name="skis"),                                 # Лыжи
+    path("accessories", shop.accessories, name="accessories"),            # Аксессуары
     path("product/<int:itm_id>", shop.product, name="prod"),             # Один продукт выводим по id из бызы данных(каждый элемент имеет уникальный id). Динамисечский url  <int:itm_id> - int *люб.нов.пер/_id.     И в *пер   tv = Product.objects.get(id=itm_id)
     
     path("reg", user.registration, name="registr"),                      # Регистрация (суф/ прил(или views).функция1(из вьюс), +-name(краткое имя пути)обычно называют, как html файл! Потом<a href="{% url"registr" %}">

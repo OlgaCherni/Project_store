@@ -12,11 +12,11 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Тень вниз. */
+/* //Тень вниз. */
 .header_container {
   background-color: #eeeeee;
   width: 100%;
-  font-size: 18px;
+  font-size: 25px;
   position: fixed;
   top: 0;
   z-index: 2;

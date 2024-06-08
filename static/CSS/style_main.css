@@ -16,7 +16,7 @@ body {
 
 /* ПЕРВОЕ ФОТО ЗАСТАВКА */
 .fir {
-  padding-top: 50px;
+  padding-top: 40px;
   max-width: 960px;
   margin: 0px auto; 
 }
@@ -104,20 +104,33 @@ body {
 
 
 
-/*  Цвет ссылок. Без подчеркивания */
+/* КНОПКА. Обводка толщиной3,сплошная,синяя. Заливка. Отступ слева. Толщина шрифта. Текст в центре. Закругление. Внутрений отстут от шрифта. Указывающая рука. Без подчеркивания */
+.btn{
+  border: 2px solid rgb(11, 11, 87);      
+  background-color: rgba(154, 164, 182, 0.718);
+  margin-left: 50px;
+  border-radius: 25px;
+  font-size: 20px;
+  text-align: center;
+  padding: 7px;
+  cursor: pointer; 
+  text-decoration: none;
+}
+
+/*  Cсылrи цвет. Без подчеркивания */
 a {
-  color: rgb(50, 50, 50);
+  color: rgb(35, 35, 35);
   text-decoration: none;
 }
 
 /* ссылки при наведении синеют */
 a:hover {
-  color: #025870;
+  color: #015167;
 }
 
 /* ссылки при нажатии берюзовые */
 a:active {
-  color: #00adb8;
+  color: #0e848c;
 }
   
   

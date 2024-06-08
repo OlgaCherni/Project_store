@@ -1,28 +1,35 @@
  <!-- Все борды -->
-{% extends "base.html" %}                  <!-- Расширение шаблона(extends). Указываем название базавого, куда отправляем контент -->
+{% extends "base.html" %}                   <!-- Расширение шаблона(extends). Указываем название базавого, куда отправляем контент -->
 
-{% load static %}                <!-- +CSS -->
+{% load static %}                           <!-- +CSS -->
 
-{% block content %}                        <!-- Расширение шаблона(extends) Начало переносимого контента -->
+{% block content %}                         <!-- Расширение шаблона(extends) Начало переносимого контента -->
 
 <div class="wraper">
-  {% for item in brd %}                      <!-- новая перем перебирает по brd(-ключ из vievs)котовый выводит все отфильтрованные доски из базы данных -->
-  <a href="{% url "prod" item.id %}">        <!-- в ссылке! Путь с странице. Проходясь по циклу. У каждого элемента свой id. -->  
-      <div class="products">
-        <img class="img" src="{{ item.image.url }}" alt="{{ item.name }}">
-        <p class="info" >{{ item.name }}</p>
-        <p class="info" >{{ item.price}} руб.</p>
 
-        <form method="POST"> {% csrf_token %}
-          <input type="hidden" value="{{item.name}}" name="get_id_produkt">
-          <button class="info btn_buy" type="submit">Добавить в корзину  </button>  
-          <input type="number" name="quantity"> <br>
-        </form>
-      </div>
-  </a>
-  {% endfor %}
+    {% for item in brd %}                      <!-- новая перем перебирает по brd(-ключ из vievs)котовый выводит все отфильтрованные доски из базы данных -->
+      <a href="{% url "prod" item.id %}">        <!-- в ссылке! Путь с странице. Проходясь по циклу. У каждого элемента свой id. -->  
+        <div class="products">
+          <img class="img" src="{{ item.image.url }}" alt="{{ item.name }}">
+          <p class="info" >{{ item.сategories }}</p>
+          <p class="info" >{{ item.name }}</p>
+          <p class="info" >Цена: {{ item.price}} руб.</p>
+          <p class="info" >В наличии: {{ item.is_active}}</p>
+         
+          <form method="POST"> {% csrf_token %}
+            <input type="hidden" value="{{item.name}}" name="get_id_produkt">
+            <button class="info btn_buy" type="submit">Добавить в корзину </button>  
+            <input type="number" name="quantity" min="1" max="100" placeholder="1"  value="{{ item.quantity }}" > <br> 
+          </form>
+        </div>
+      </a>
+    {% endfor %}
+    <div>
+      <button class="btn"><a href="{%url 'main' %}">В каталог</a></button>
+    </div> 
 
 </div>
+
 {% endblock content %}                    <!-- Расширение шаблона(extends) Конец переносимого контента -->
 
 

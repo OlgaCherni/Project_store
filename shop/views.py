@@ -13,17 +13,24 @@ def boards(request):                                                            
     board = Product.objects.filter(сategories=b_product)                                   # нов ключ перебирает значения из экземпляра board
     if request.method == 'POST':                                                           # к заказам
         name_product = request.POST.get("get_id_produkt")                                  # имя покупки
+        quantity = request.POST.get("quantity")
+        print(name_product,quantity)
         product = Product.objects.get(name=name_product)
         user, _ = UserBasket.objects.get_or_create(user_kay=request.session.session_key)   # *
-        new_basket = ProductInBasket.objects.create(
-            user_basket = user,
-            product = product,
-            quantity = 1,
-            total_price = product.price
-        )
-        new_basket.save()
+        get_basket=ProductInBasket.objects.filter(product=product).first()
+        if get_basket:
+            get_basket.quantity+=int(quantity)
+            # get_basket.total_price*=quantity
+        else:
+                new_basket = ProductInBasket.objects.create(
+                user_basket = user,
+                product = product,
+                quantity = 1,
+                total_price = product.price
+            )       
+                new_basket.save()
         print("Ваш товар(сноуборд) добавлен в корзину!")
-    return render(request, "boards.html", {"brd": board})                                  # нов ключ перебирает значения из board(экземпляра классаProduct)
+    return render(request, "boards.html", {"brd": board})
 
 
 def skis(request):                                                                 # ЛЫЖИ

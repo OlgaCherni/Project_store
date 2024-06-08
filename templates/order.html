@@ -1,33 +1,33 @@
-{% comment %}   {% load static %}    {% endcomment %}                                              <!-- +CSS -->
-
+{% load static %}                                            <!-- +CSS -->
 <!DOCTYPE html>
 <html>
 <head>
     <title>order</title>
     <meta charset="utf-8" />
-    {% comment %}    <link rel="stylesheet" href="{% static "CSS/style_order.css" %}" />     {% endcomment %}                     <!-- +CSS -->  
-    <link rel="stylesheet" href="../static/CSS/style_order.css"/>
+    <link rel="stylesheet" href="{% static "CSS/style_order.css" %}" />                    <!-- +CSS -->  
 </head>
-
 <body>
-
+    {% include "includes/header.html" %}                 <!-- встявляем header -->
     <h3>Подтверждение заказа</h3>
      
-    </div>
+    <div class="container_o">
         <form method ="POST"> {% csrf_token %} 
             <div>
-                <p><b>Введите имя:</b><input type="text" id = "name" size="40" placeholder ="Ваше имя:"></p>
-                <p><b>Введите контактный номер:</b><input type="tel" id = "telephone" size="40" required name = "telephone" placeholder = "+375 (NN) 999-99-99"class = "input-text qty text"></p>
-                <p><b>Введите почту:</b><input type="email" size="40" id = "email" name = "email" placeholder = "example@example.ru" required > </p>
-                <p><b>Введите адрес:</b><input type="text" id = "name" size="40" placeholder ="Адрес:"></p>
+                <p><b>Введите имя:</b><input type="text" id = "name" size="20" placeholder ="Имя"></p>
+                <p><b>Введите контактный номер:</b><input type="tel" id = "telephone" size="20" required name = "telephone" placeholder = "+375 (NN) 999-99-99"class = "input-text qty text"></p>
+                <p><b>Введите почту:</b><input type="email" size="20" id = "email" name = "email" placeholder = "example@example.ru" required > </p>
+                <p><b>Введите адрес:</b><input type="text" id = "name" size="20" placeholder ="адрес"></p>
             </div>
             <div >
-                <button class="order_button" type="button"  data-dismiss="modal" >Закрыть</button>
-                <button class="order_button" type="submit" data-toggle="modal" data-target="#modal_window">Подтвердить</button>
+                <button class="btn" type="button"  data-dismiss="modal" >Закрыть</button>
+                <button class="btn" type="submit" data-toggle="modal" data-target="#modal_window">Подтвердить</button>
             </div>
         </form>
+        <div>
+            <button class="btn"><a href="{%url 'main' %}">Перейти в каталог</a></button> 
+        </div>
     </div>
-
+    {% include "includes/footer.html" %}                 <!-- встявляем footer -->
 </body>
 </html>
 
