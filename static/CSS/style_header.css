@@ -12,7 +12,14 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* //Тень вниз. */
+/* Имя сайта шрифт ширина размер  */
+.storename {
+  font-family: 'Pacifico', cursive;
+  font-weight: 20px;
+  font-size: 1.5rem;
+}
+
+/* Тень вниз. */
 .header_container {
   background-color: #eeeeee;
   width: 100%;
@@ -26,7 +33,7 @@ body {
 /* Обертка строки (двух списков -слева и справа) */
 .header_wrapper {
   margin: 0 auto;
-  max-width: 960px;
+  max-width: 1200px;
   padding-top: 10px;
 }
 

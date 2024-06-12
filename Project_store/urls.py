@@ -16,27 +16,32 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from django.conf.urls.static import static                               # 3(5)шаг для отображения на странице картинок из базы данных
-from django.conf import settings                                         # 4(5)шаг для отображения на странице картинок из базы данных
+from django.conf.urls.static import static                                              # 3(5)шаг для отображения на странице картинок из базы данных
+from django.conf import settings                                                        # 4(5)шаг для отображения на странице картинок из базы данных
 from shop import views as shop
-from users import views as user                                          # или from users.views import , (все функции!)
+from users import views as user                                                         # или from users.views import , (все функции!)
+from django.contrib.auth.views import LogoutView
 from orders import views as order
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),                                     
 
-    path("", shop.index, name="main"),                                   # Каталог(борд,лыжы,аксессуары)
-    path("boards", shop.boards, name="boards"),                           # Борды
-    path("skis", shop.skis, name="skis"),                                 # Лыжи
-    path("accessories", shop.accessories, name="accessories"),            # Аксессуары
-    path("product/<int:itm_id>", shop.product, name="prod"),             # Один продукт выводим по id из бызы данных(каждый элемент имеет уникальный id). Динамисечский url  <int:itm_id> - int *люб.нов.пер/_id.     И в *пер   tv = Product.objects.get(id=itm_id)
+    path("", shop.index, name="main"),                                                  # Главная страница
+    path("category/<int:id>", shop.category, name="category"),                          # Категории(борды/лыжи/аксессуары)
     
-    path("reg", user.registration, name="registr"),                      # Регистрация (суф/ прил(или views).функция1(из вьюс), +-name(краткое имя пути)обычно называют, как html файл! Потом<a href="{% url"registr" %}">
-    path("login/", user.log, name="login"),                              # Логин вход
-    path("basket/", order.basket, name="basket"),                           # Корзина
+    path("product/<int:itm_id>", shop.product, name="prod"),                            # Один продукт выводим по id из бызы данных(каждый элемент имеет уникальный id). Динамисечский url  <int:itm_id> - int *люб.нов.пер/_id.     И в *пер   tv = Product.objects.get(id=itm_id)
+    path("search/", shop.search, name="search"),                                        # Поиск по сайту. Префикс/ гдеФункция Имя genb в html.
 
-    # path('basket_adding', order.basket_adding ,name = "basket_adding"), 
-    # path('orders', order.order_create, name='order_create'),
+    path("reg", user.registration, name="registr"),                                     # Регистрация (суф/ прил(или views).функция1(из вьюс), +-name(краткое имя пути)обычно называют, как html файл! Потом<a href="{% url"registr" %}">
+    path("login/", user.log, name="login"),                                             # Логин вход 
+    path("logout/", LogoutView.as_view, name="logout"),                                 # Выход 
+    
+    path("basket/", order.basket, name="basket"),                                       # Корзина
+    path("order/", order.order, name="order"),                                          # Заказ
+
+    # path('cart_add/', order.cart_add, name='cart_add'),                                # Добавить товар в корзину
+    # path('cart_change/', order.cart_change, name='cart_change'),                       # Изменить содержимое карзины
+    # path('cart_remove/', order.cart_remove, name='cart_remove'),                       # Очистить корзину
 ]
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)   # 5(5)шаг для отображения на странице картинок из базы данных. 
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)           # 5(5)шаг для отображения на странице картинок из базы данных. 

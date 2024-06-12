@@ -3,18 +3,16 @@ body{
     background-attachment: fixed;
     background-color: rgb(219, 218, 249); 
     height: 100%;
-    margin-top: 50px;
     font-family: "Times New Roman", Georgia, Serif; 
-
 }
 
-/*  В линию таблицей. Ширина высота блока. Отступ от каждого блока.Фот в блоке.Цвет шрифта.Закруглен. Тень. Отступы внутри. */
+/*  Квадраны. В линию сеткой. Ширина высота блока. Отступ от каждого блока.Фот в блоке.Цвет шрифта.Закруглен. Тень. Отступы внутри. */
 .products{
     display: inline-table;
     width: 400px;
     height: 400px;
-    margin-top: 30px;
-    margin-left: 40px;
+    margin-top: 50px;
+    margin-left: 45px;
     background-color: aliceblue;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(70, 56, 56, 0.5);
@@ -24,8 +22,7 @@ body{
 /* Картинки. Три строки выравнивают поцентру. Сверху отступ 10. Высота картинки. Тень: право низ размытие цвет.. */ 
 .img{
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto auto;
     padding-top: 10px;
     height: 350px;
     box-shadow: 15px 10px 8px  rgb(53, 52, 65); 

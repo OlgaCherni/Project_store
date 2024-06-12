@@ -1,28 +1,66 @@
 {% extends "base.html" %}                  <!-- Расширение шаблона(extends). Указываем название базавого, куда отправляем контент -->
 
-{% load static %}                <!-- +CSS -->
+{% load static %}               <!-- +CSS -->
 
 {% block content %}                        <!-- Расширение шаблона(extends) Начало переносимого контента -->
 <body>
-    <div>
-            
-        <div class="container_b">
-            <h2>Корзина</h2>
-            <h3>Ваши заказы:</h3>
-            <p>{% for item in products %}</p>
-            <img class="img_bsc" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
-            <p> {{ item.product.сategories}}</p>                <!-- item- экз кл-са ProductInBasket в ней product-экз класса. у него связь с классом Product в этом классе name берем -->            
-            <p> {{ item.product.name  }} руб.</p>
-            <p> {{ item.quantity }}шт.</p>              <!-- А значение quantity просто из ProductInBasket -->
-            <p> {{ item.total_price }} руб.</p> <br>
-            {% endfor %}
+    <div class="container_b">
+        <h2> КОРЗИНА <img  src={% static "media\basket.png" %} height="50"> </h2>
+        
 
+        <table>
+            <caption>
+                Ваши заказы в корзине:
+            </caption>
+
+            <thead>
+                <tr>
+                    <th scope="col">Изображение</th>
+                    <th scope="col">Категория</th>
+                    <th scope="col">Наименование товара</th>
+                    <th scope="col">Количество</th>
+                    <th scope="col">Цена</th>
+                    <th scope="col">Удалить элемент</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for item in products %}
+                <tr>
+                    <td><img class="img_bsc" src="{{ item.product.image.url }}" alt="{{ item.product.name }}"></td>
+                    <th scope="col"> {{ item.product.сategories}}</th>
+                    <th scope="col"> {{ item.product.name  }} </th>
+                    <td> {{ item.quantity }} шт. </td>
+                    <td> {{ item.total_price }} руб.</td>    
+                    <td> {{ item.quantity }}</td>  
+                </tr>
+                <br>
+                   {% endfor %}
+            </tbody>
+
+            <tfoot>
+                <tr>
+                    <th scope="row" colspan="2">Общая стоимость</th>
+                    <td colspan="2"> {{ price }} руб. </td>
+                </tr>
+            </tfoot>  
+        </table>
+
+        <a href="{%url 'order' %}">Подтведрить заказ</a>
+
+        <div>
             <form method ="POST"> {% csrf_token %} 
-                {% comment %} <p><label for="comment">Ваш комментарий:</label></p><br/>
-                <p><textarea name="comment" id="comment" placeholder="Не более 300 символов" maxlength="300"></textarea></p> {% endcomment %}
-                <tr> <td><input class="button_cl" type="submit" value="Подтведрить заказ"></td> <td><input type="reset" value="Удалить всё"></td></tr>
+                <tr> 
+                     <td><input type="reset" value="Удалить всё"></td></tr>
             </form>
         </div>
+
+ {% comment %} <!-- Очистить корзину -->
+        <button type="button" class="btn btn-dark btn-sm increment"
+        data-cart-id="{{ cart.id }}"
+        data-cart-change-url="{% url "cart:cart_change" %}">
+        {% csrf_token %}
+        +</button> {% endcomment %}
 
         <div>  
             <button class="btn"><a href="{%url 'main' %}">В  каталог </a></button> 
@@ -31,4 +69,3 @@
     </div>
 </body>
 {% endblock content %}                    <!-- Расширение шаблона(extends) Конец переносимого контента -->
-

@@ -7,7 +7,7 @@
     margin-top: 100px;
     margin-left: -10px;
     margin-right: -10px;
-    color: #2f2f2f;
+    color: #2f2f2f;                  /*   цвет заголовков столбцов */
     background-color: #eeeeee;
     border-top: 1px solid #c1bfbf;
     flex:  1 100%;
@@ -30,8 +30,8 @@
 /* В логотике картинка */
 .logo img {
     margin-top: 1.3em;
-    font-size: 15px;
-    font-weight: 100;
+    font-size: 20px;
+    font-weight: 200;
 }
 
  /*! Одинаковое для всех элементов(столбцов) */ 
@@ -53,10 +53,29 @@
 }
 
 .item-4 {
-    border: 1px  dashed grey;
+    display: flex;
+    flex-direction: row;                          /*  соцсети */
 }
 
- 
+
+
+ /*  Есть уже некоторые элементы */
+/*  Цвет ссылок. Без подчеркивания */
+a {
+    color: rgb(50, 50, 50);
+    text-decoration: none;
+  }
+  
+  /* ссылки при наведении синеют */
+  a:hover {
+    color: #03799a;
+  }
+  
+  /* ссылки при нажатии берюзовые */
+  a:active {
+    color: #00adb8;
+  }
+
 /* Спикок маркерованый без маркера */  
 .footer_container ul {
     list-style: none;
@@ -70,12 +89,12 @@
 
 /* Элеметы списков(время работы)  серые */ 
 li {
-    color: #999;
+    color: #444444;
 }
 
 /* Элеметы списков(все ссылки) серые.без подчеркивания */ 
 a {
-    color: #999;
+    color: #444444;
     text-decoration: none;
 }
 
@@ -105,20 +124,4 @@ a {
 
 
 
-/*  Есть уже некоторые элементы */
-/*  Цвет ссылок. Без подчеркивания */
-a {
-    color: rgb(50, 50, 50);
-    text-decoration: none;
-  }
-  
-  /* ссылки при наведении синеют */
-  a:hover {
-    color: #03799a;
-  }
-  
-  /* ссылки при нажатии берюзовые */
-  a:active {
-    color: #00adb8;
-  }
 

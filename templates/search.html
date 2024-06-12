@@ -1,0 +1,44 @@
+ <!-- Поиск  -->
+ {% extends "base.html" %}                  <!-- Расширение шаблона(extends). Указываем название базавого, куда отправляем контент -->
+
+ {% load static %}              <!-- +CSS -->
+
+ {% block content %}                        <!-- Расширение шаблона(extends) Начало переносимого контента -->
+
+<div class="vitrina">
+<div class="wrapper">
+    <h3> Результат поиска </h3>
+
+    {% if products_name or products_description %}
+    <ol>
+        {% comment %} {% for product in products_name %}                  <!-- По имени поиск -->
+        <li>
+            <a href="{% url "prod" product.id %}">    <!-- урлы -->
+             <img class="img" src="{{ product.image.url }}" alt="{{product.name }}">
+             {{product.name}} 
+            </a>
+        </li>
+        {% endfor %} {% endcomment %}
+
+        {% for product in products_description %}                          <!-- По словам в описании поиск -->
+        <li>
+            <a href="{% url "prod" product.id %}">    <!-- урлы -->
+             <img class="img" src="{{ product.image.url }}" alt="{{product.name }}">
+             {{product.name}} 
+            </a>
+        </li>
+        {% endfor %}
+    <ol>
+    {% else %}
+        <p>Ничего не найдено </p> 
+    {% endif %}
+
+
+
+
+{% endblock content %}                    <!-- Расширение шаблона(extends) Конец переносимого контента -->
+
+
+
+
+

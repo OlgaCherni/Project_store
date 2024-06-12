@@ -4,12 +4,11 @@ from django.db import models
 
 class Сategories(models.Model):                                                                 # 3 вида товара Категории: сноуборд лыжи аксессуары. Наследуемся от встроеного класса.               
     namec = models.CharField(max_length=80, verbose_name= "Категория товара")
-    # slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL")
 
     def __str__(self):
-        return self.namec                                                                      # Визуал в админке списоком по имени капегорий
+        return self.namec                                                                      # Визуал в админке списоком по имени категорий
 
-    class Meta:                                                                                # В админ панели имя.
+    class Meta:                                                                                # В админ панели имя таблицы класса.
         verbose_name = "Категория"      
         verbose_name_plural = "Категории"
 
@@ -24,9 +23,9 @@ class Product(models.Model):                                                    
     is_active = models.BooleanField(verbose_name="В наличии", blank=False, default=True)
 
     def __str__(self):
-        return f"Товар:{self.name}"                                                  # Визуал в админке.
+        return f"Товар:{self.name}"                                                               # Визуал в админке.
     
-    class Meta:                                                                      # В админ панели имя.
+    class Meta:                                                                                   # В админ панели имя таблицы класса.
         verbose_name = "Продукт"      
         verbose_name_plural = "Продукты"
     

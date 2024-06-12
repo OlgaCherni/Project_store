@@ -5,15 +5,22 @@
     <div class="header_wrapper">
         <nav class="navigation">
             <ul class="item_nav">
-                <li class="item"><a class="link__header" href="{% url 'main' %}">SnowWave</a></li>
-                <li class="item"><a class="logo__header" href=""><img src="{% static 'media\logo01.png' %}"  alt="logo" height="60px"></a></li>
+                <li class="item"><a class="link__header storename" href="{% url 'main' %}">SnowWave</a></li>
+                <li class="item"><a class="logo__header" href="{% url 'main' %}"><img src="{% static 'media\logo01.png' %}"  alt="logo" height="60px"></a></li>
                 <li class="item"><a class="link__header" href="">О нас</a></li>
             </ul>
             
             <ul class="item_nav">
-                <li><input class="form-control" type="text" placeholder="Поиск"></li>
+                <li>
+                    <form role="search" action="{% url "search" %}" method="get" >                              <!-- ПОИСК ПО САЙТУ. url атрибут-куда делается запрос.url место где и имя. -->
+                        <input type="search" name="query" placeholder="Поиск" aria-label="Search">
+                        <button type="submit"> Поиск </button> 
+                    </form>
+                </li>
                 <li class="item"><a href="{%url 'basket' %}">Корзина</a></li>
                 <li class="item"><a href="{%url 'registr' %}">Вход</a></li>
+                <li class="item"><a href="{%url 'logout' %}">Выход</a></li>
+
             </ul>
         </nav>
     </div>

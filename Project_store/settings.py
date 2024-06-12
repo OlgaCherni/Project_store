@@ -38,9 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'shop',                                                    #
-    'users',                                                   #
-    'orders',
+    'shop',                                                      #
+    'users',                                                     #
+    'orders',                                                    #
 ]
 
 MIDDLEWARE = [
@@ -58,7 +58,7 @@ ROOT_URLCONF = 'Project_store.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS':  [ BASE_DIR / 'templates', ],                           #
+        'DIRS':  [ BASE_DIR / 'templates', ],                            # templates html может лежать не только по умолчанию в приложении, но и в корне проекта!
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

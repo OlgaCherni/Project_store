@@ -1,33 +1,27 @@
-{% load static %}                                            <!-- +CSS -->
-<!DOCTYPE html>
-<html>
-<head>
-    <title>order</title>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="{% static "CSS/style_order.css" %}" />                    <!-- +CSS -->  
-</head>
-<body>
-    {% include "includes/header.html" %}                 <!-- встявляем header -->
+{% extends "base.html" %}                  <!-- Расширение шаблона(extends). Указываем название базавого, куда отправляем контент -->
+
+{% load static %}               <!-- +CSS -->
+
+{% block content %}                        <!-- Расширение шаблона(extends) Начало переносимого контента -->
+
     <h3>Подтверждение заказа</h3>
      
     <div class="container_o">
         <form method ="POST"> {% csrf_token %} 
             <div>
-                <p><b>Введите имя:</b><input type="text" id = "name" size="20" placeholder ="Имя"></p>
-                <p><b>Введите контактный номер:</b><input type="tel" id = "telephone" size="20" required name = "telephone" placeholder = "+375 (NN) 999-99-99"class = "input-text qty text"></p>
-                <p><b>Введите почту:</b><input type="email" size="20" id = "email" name = "email" placeholder = "example@example.ru" required > </p>
-                <p><b>Введите адрес:</b><input type="text" id = "name" size="20" placeholder ="адрес"></p>
+                <p><b>Введите имя:</b>{{form_key.name}}</p>
+                <p><b>Введите контактный номер:</b>{{form_key.phone}}</p>
+                <p><b>Введите почту:</b>{{form_key.email}} </p>
+                <p><b>Введите адрес:</b>{{form_key.adres}}</p>
             </div>
             <div >
-                <button class="btn" type="button"  data-dismiss="modal" >Закрыть</button>
+                <button class="btn" type="reset"  data-dismiss="modal">Сброс</button>
                 <button class="btn" type="submit" data-toggle="modal" data-target="#modal_window">Подтвердить</button>
             </div>
         </form>
         <div>
-            <button class="btn"><a href="{%url 'main' %}">Перейти в каталог</a></button> 
+            <button class="btn"><a href="{%url 'main' %}">На главную</a></button> 
         </div>
     </div>
-    {% include "includes/footer.html" %}                 <!-- встявляем footer -->
-</body>
-</html>
 
+{% endblock content %}                    <!-- Расширение шаблона(extends) Конец переносимого контента -->
