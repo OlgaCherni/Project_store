@@ -23,39 +23,24 @@ from shop.models import Product         # ____________
 def basket(request):
     user, _ = UserBasket.objects.get_or_create(user_kay=request.session.session_key)   # *
     lst_product = ProductInBasket.objects.filter(user_basket=user)
+    
     total_price=0
     for price in lst_product:
         total_price+=price.total_price
-        print(total_price)
     if request.method == 'POST': 
-        lst_product.delete()
+        product=request.POST.get("product")
+        id_product = Product.objects.get(id=product)
+        get_product = ProductInBasket.objects.filter(product = id_product)
+        get_product.delete()
     return render(request, "basket.html", {"products":lst_product,'price':total_price})
 
-
+ 
 # оформлене заказа
 def order(request):
     form = FormOrder()
     return render(request, "order.html", {'form_key':form})
 
 
-# Удалит элемент из корзины
-def cart_remove(request):
-    cart_id = request.POST.get("cart_id")
-    cart = Cart.objects.get(id=cart_id)
-    quantity = cart.quantity
-    cart.delete()
-
-    user_cart = get_user_carts(request)
-    cart_items_html = render_to_string(
-        "carts/includes/included_cart.html", {"carts": user_cart}, request=request)
-
-    response_data = {
-        "message": "Товар удален",
-        "cart_items_html": cart_items_html,
-        "quantity_deleted": quantity,
-    }
-
-    return JsonResponse(response_data)
 
 
 

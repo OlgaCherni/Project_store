@@ -28,9 +28,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),                                     
 
     path("", shop.index, name="main"),                                                  # Главная страница
+    path("about", shop.about, name="about"),                                                  # О нас
     path("category/<int:id>", shop.category, name="category"),                          # Категории(борды/лыжи/аксессуары)
     
-    path("product/<int:itm_id>", shop.product, name="prod"),                            # Один продукт выводим по id из бызы данных(каждый элемент имеет уникальный id). Динамисечский url  <int:itm_id> - int *люб.нов.пер/_id.     И в *пер   tv = Product.objects.get(id=itm_id)
+    path("product/<int:itm_id>", shop.product, name="product_page"),                         # Один продукт выводим по id из бызы данных(каждый элемент имеет уникальный id). Динамисечский url  <int:itm_id> - int *люб.нов.пер/_id.     И в *пер   tv = Product.objects.get(id=itm_id)
     path("search/", shop.search, name="search"),                                        # Поиск по сайту. Префикс/ гдеФункция Имя genb в html.
 
     path("reg", user.registration, name="registr"),                                     # Регистрация (суф/ прил(или views).функция1(из вьюс), +-name(краткое имя пути)обычно называют, как html файл! Потом<a href="{% url"registr" %}">

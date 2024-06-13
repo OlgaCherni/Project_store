@@ -29,13 +29,15 @@
                 <tr>
                     <td><img class="img_bsc" src="{{ item.product.image.url }}" alt="{{ item.product.name }}"></td>
                     <th scope="col"> {{ item.product.сategories}}</th>
-                    <th scope="col"> {{ item.product.name  }} </th>
+                    <th scope="col"> {{ item.product.name }} </th>
                     <td> {{ item.quantity }} шт. </td>
-                    <td> {{ item.total_price }} руб.</td>    
-                    <td> {{ item.quantity }}</td>  
+                    <td> {{ item.total_price }} руб.</td>
+                    <td><form method="POST"> {% csrf_token %}
+                    <input type="hidden" name="product" value="{{item.product.id}}">
+                <button type="submit">Удалить</button> </form></td>
                 </tr>
                 <br>
-                   {% endfor %}
+                {% endfor %}
             </tbody>
 
             <tfoot>
@@ -43,29 +45,25 @@
                     <th scope="row" colspan="2">Общая стоимость</th>
                     <td colspan="2"> {{ price }} руб. </td>
                 </tr>
-            </tfoot>  
+            </tfoot>
         </table>
 
-        <a href="{%url 'order' %}">Подтведрить заказ</a>
+        <a class="btn_in" href="{%url 'order' %}">Подтвердить заказ</a>
 
         <div>
-            <form method ="POST"> {% csrf_token %} 
-                <tr> 
-                     <td><input type="reset" value="Удалить всё"></td></tr>
+            <form method="POST"> {% csrf_token %}
+                <tr>
+                    <td><input type="reset" value="Удалить всё"></td>
+                </tr>
             </form>
         </div>
 
- {% comment %} <!-- Очистить корзину -->
-        <button type="button" class="btn btn-dark btn-sm increment"
-        data-cart-id="{{ cart.id }}"
-        data-cart-change-url="{% url "cart:cart_change" %}">
-        {% csrf_token %}
-        +</button> {% endcomment %}
 
-        <div>  
-            <button class="btn"><a href="{%url 'main' %}">В  каталог </a></button> 
+
+        <div>
+            <button class="btn"><a href="{%url 'main' %}">В каталог </a></button>
         </div>
 
     </div>
 </body>
-{% endblock content %}                    <!-- Расширение шаблона(extends) Конец переносимого контента -->
+{% endblock content %} <!-- Расширение шаблона(extends) Конец переносимого контента -->

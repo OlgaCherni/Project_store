@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 
-class Сategories(models.Model):                                                                 # 3 вида товара Категории: сноуборд лыжи аксессуары. Наследуемся от встроеного класса.               
+class Сategories(models.Model):                                                                 # 3 категории: сноуборд лыжи аксессуары. Наследуемся от встроеного класса.               
     namec = models.CharField(max_length=80, verbose_name= "Категория товара")
 
     def __str__(self):
@@ -13,7 +13,7 @@ class Сategories(models.Model):                                                
         verbose_name_plural = "Категории"
 
 
-class Product(models.Model):                                                                               # ОДИН КО МНОГИМ модель Товар(разные модели по трем категориям)
+class Product(models.Model):                                                                               #Один ко многим. Разные товары по 3 категориям.
     сategories = models.ForeignKey(Сategories, on_delete = models.CASCADE, blank=False, default=True)    
     name = models.CharField(max_length=150, verbose_name="Наименование")
     image = models.ImageField(upload_to ='static\imagebd', verbose_name="Картинка", null=True, blank=True)      # 1(5)шаг для отображения на странице картинок из базы данных                                                         

@@ -22,7 +22,7 @@
 
         {% for product in products_description %}                          <!-- По словам в описании поиск -->
         <li>
-            <a href="{% url "prod" product.id %}">    <!-- урлы -->
+            <a href="{% url "product_page" product.id %}">    <!-- урлы -->
              <img class="img" src="{{ product.image.url }}" alt="{{product.name }}">
              {{product.name}} 
             </a>

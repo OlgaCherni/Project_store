@@ -9,23 +9,23 @@
         <div class="wrapper">
 
             <div class="name">
-                <p>Категория: {{tv.сategories}}</p>
-                <p> {{tv.name}}</p>                        <!-- Вьюха функция ОДИН ПРОДУКТ. из моделей имя, цена... -->
-                <p>Цена: {{tv.price}} руб.</p>
+                <p>Категория: {{product.сategories}}</p>
+                <p> {{product.name}}</p>                        <!-- Вьюха функция Один подукт. Имя, цена из модели -->
+                <p>Цена: {{product.price}} руб.</p>
             </div>
 
             <div class="foto_pr">
-                <img class="filter_img" src="{{tv.image.url}}" alt="">
+                <img class="filter_img" src="{{product.image.url}}" alt="">
             </div>
 
             <div class="info_d">
-                {{tv.description}}
+                {{product.description}}
             </div>
         </div>
 
         <div>
-          <form method="POST"> {% csrf_token %}                                       <!-- Кнопка добавления в корзину с выбором количества -->
-            <input type="hidden" value="{{item.name}}" name="get_id_produkt">
+          <form method="POST"> {% csrf_token %}                                       <!-- Кнопка добавления в корзину. С выбором количества -->
+            <input type="hidden" value="{{item.name}}" name="get_id_product">
             <button class="info btn_buy" type="submit">Добавить в корзину</button>  
             <input type="number" name="quantity" min="1" max="100" placeholder="1" value=1 > <br> 
           </form>

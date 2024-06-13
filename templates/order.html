@@ -2,26 +2,27 @@
 
 {% load static %}               <!-- +CSS -->
 
-{% block content %}                        <!-- Расширение шаблона(extends) Начало переносимого контента -->
+{% block content %}  
 
-    <h3>Подтверждение заказа</h3>
+<div class="container_b">
+    <h2>Подтверждение заказа</h2>
+    <h2><img  src={% static "media\99.png" %} height="50"> </h2>
      
-    <div class="container_o">
+    <div>
         <form method ="POST"> {% csrf_token %} 
             <div>
-                <p><b>Введите имя:</b>{{form_key.name}}</p>
-                <p><b>Введите контактный номер:</b>{{form_key.phone}}</p>
-                <p><b>Введите почту:</b>{{form_key.email}} </p>
-                <p><b>Введите адрес:</b>{{form_key.adres}}</p>
+                <h3><b>Введите имя:</b>{{form_key.name}}</h3>
+                <h3><b>Введите телефон:</b>{{form_key.phone}}</h3>
+                <h3><b>Введите почту:</b>{{form_key.email}}</h3>
+                <h3><b>Введите адрес:</b>{{form_key.adres}}</h3>
             </div>
             <div >
                 <button class="btn" type="reset"  data-dismiss="modal">Сброс</button>
                 <button class="btn" type="submit" data-toggle="modal" data-target="#modal_window">Подтвердить</button>
             </div>
         </form>
-        <div>
-            <button class="btn"><a href="{%url 'main' %}">На главную</a></button> 
-        </div>
-    </div>
 
-{% endblock content %}                    <!-- Расширение шаблона(extends) Конец переносимого контента -->
+    </div>
+</div>   
+
+{% endblock content %}                  

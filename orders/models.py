@@ -1,25 +1,52 @@
 from django.db import models
 from shop.models import Product
 
-# Create your models here.\
-
-class UserBasket(models.Model):                                                           # владелец корзины
+# Владелец корзины
+class UserBasket(models.Model):                                                           
     user_kay =  models.CharField(max_length=128,blank=True , null=True, default=None)
-    
 
-class ProductInBasket(models.Model):                                                      # заказ
-    user_basket=models.ForeignKey(UserBasket, on_delete=models.CASCADE,null=True)         # *
+    def __str__(self):
+        return f"{self.user_kay }"                               # визуал в админк
+   
+    class Meta:                             # В админ панели имя таблицы класса.                                                                         
+        verbose_name = "Ключи Сессии Анонимный пользователь"      
+        verbose_name_plural = "Анонимные пользователи"
+
+
+# Заказ
+class ProductInBasket(models.Model):                                                      
+    user_basket=models.ForeignKey(UserBasket, on_delete=models.CASCADE,null=True)         #-
     product=models.ForeignKey(Product, on_delete=models.CASCADE,null=True, verbose_name="Наименование товара")
     quantity = models.IntegerField(verbose_name='Количество', default=1)
-    total_price = models.FloatField(blank=True,null=True,default=0)
+    total_price = models.FloatField(verbose_name='Общая стоимость товара', blank=True,null=True,default=0)
+
+    def __str__(self):
+        return f"{self.user_basket }"
+
+    class Meta:                                             
+        verbose_name = "Товары в корзине"      
+        verbose_name_plural = "Товары в корзине"
+
 
 # Храним сделанные заказы(журнал заказов)
 class Order(models.Model):
-    product = models.ForeignKey(ProductInBasket, on_delete = models.CASCADE, blank=False, default=True)  # ОДИН КО МНОГИМ 
+    product = models.ForeignKey(ProductInBasket, on_delete = models.CASCADE, blank=False, default=True)  #один ко многим
     name = models.CharField(max_length=150, verbose_name="Имя")
     phone = models.CharField(max_length=150, verbose_name="Телефон")
     email = models.CharField(max_length=150, verbose_name="Почта")
     adres = models.CharField(max_length=150, verbose_name="Адрес")
+
+
+
+    class Meta:                                                 # В админ панели имя таблицы класса.
+        verbose_name = "Журнал заказов"      
+        verbose_name_plural = "Журнал заказов"
+
+
+
+
+
+
 
 
 
