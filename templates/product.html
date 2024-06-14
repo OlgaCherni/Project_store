@@ -21,19 +21,21 @@
             <div class="info_d">
                 {{product.description}}
             </div>
+
+
+            <div>
+            <form method="POST"> {% csrf_token %}                                       <!-- Кнопка добавления в корзину. С выбором количества -->
+                <input type="hidden" value="{{item.name}}" name="get_id_product">
+                <button class="info btn_buy" type="submit">Добавить в корзину</button>  
+                <input type="number" name="quantity" min="1" max="100" placeholder="1" value=1 > <br> 
+            </form>
+            </div>
+
         </div>
 
-        <div>
-          <form method="POST"> {% csrf_token %}                                       <!-- Кнопка добавления в корзину. С выбором количества -->
-            <input type="hidden" value="{{item.name}}" name="get_id_product">
-            <button class="info btn_buy" type="submit">Добавить в корзину</button>  
-            <input type="number" name="quantity" min="1" max="100" placeholder="1" value=1 > <br> 
-          </form>
-        </div>
-
-        <div>
-            <button class="btn"><a href="{%url 'main' %}">В каталог </a></button>
-        </div>
+            <div>
+                <button class="btn"><a href="{%url 'main' %}">В каталог </a></button>
+            </div>
 
     </div>
 

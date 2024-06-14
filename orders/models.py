@@ -27,7 +27,6 @@ class ProductInBasket(models.Model):
         verbose_name = "Товары в корзине"      
         verbose_name_plural = "Товары в корзине"
 
-
 # Храним сделанные заказы(журнал заказов)
 class Order(models.Model):
     product = models.ForeignKey(ProductInBasket, on_delete = models.CASCADE, blank=False, default=True)  #один ко многим
