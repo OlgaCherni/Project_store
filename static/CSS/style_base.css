@@ -63,6 +63,18 @@
 	text-shadow: 0px 1px 1px rgb(30, 88, 17);
 }
 
+ /* order.html Поля ввода. basket.html удалить один объект */ 
+ input {
+    margin: 30px 5px;
+    padding: 3px;
+    font-size: 20px;
+    text-align: center;
+    color: #07008b;
+    background-color: inherit;
+    border: 2px solid rgb(0, 7, 100);
+    border-radius: 10px;
+    cursor: pointer;
+  }
 
  /* about.html Bконка  */ 
  .otstup{

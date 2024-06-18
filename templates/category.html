@@ -24,7 +24,7 @@
             <p class="info" >{{ item.name }}</p>
             <p class="info" >Цена: {{ item.price}} руб.</p>
 
-            {% if item.quantity > 0 %}      
+            {% if item.is_active %}   <!--  * item.quantity > 0 - по количеству на складе.  item.is_active - по графе в наличии. -->
               <p class="info" >В наличии: &#10004;</p>   <!-- В наличии- галочка V -->
             {% else %}
               <p class="info">Нет в наличии</p>
@@ -33,9 +33,9 @@
 
       <div>
           <form method="POST"> {% csrf_token %}  
-            <input type="hidden" value="{{item.name}}" name="get_id_product">
-              {% if item.quantity > 0 %}
-                <button class="info btn_buy" type="submit">Добавить в корзину</button>
+            <input type="hidden" value="{{item.name}}" name="get_id_product"> 
+              {% if item.quantity > 0 %}      <!--  * item.quantity > 0 - по количеству на складе.  item.is_active - по графе в наличии. -->
+                <button class="info btn_buy" type="submit">Добавить в корзину</button>         
                 <input class="info quantity" type="number" name="quantity" min="1" max="{{ item.quantity }}" value="1"> <br> <!-- Чтоб счетчик добавления в корзину не привышал max количество на складе -->
               {% else %}
                 <button class="info btn_buy" type="submit" disabled>Добавить в корзину</button>
@@ -51,7 +51,6 @@
     <div>
       <button class="btn"><a href="{%url 'main' %}">НА ГЛАВНУЮ</a></button>
     </div> 
-
   </div>
 
 {% endblock content %}   

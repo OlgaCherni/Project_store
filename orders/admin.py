@@ -1,4 +1,3 @@
-
 from django.contrib import admin
 from .models import Order, OrderItem
 
@@ -13,6 +12,6 @@ class OrderAdmin(admin.ModelAdmin):
 
 @admin.register(OrderItem)
 class OrderItemAdmin(admin.ModelAdmin):
-    list_display = ('order', 'product', 'name', 'price', 'quantity', 'created_timestamp')
-    list_filter = ('order', 'product')
+    list_display = ('order_id', 'product', 'name', 'price', 'quantity', 'created_timestamp')
+    list_filter = ('order_id', 'product')
     search_fields = ('name',)

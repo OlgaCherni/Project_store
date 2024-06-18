@@ -7,6 +7,13 @@ body{
     font-family: "Times New Roman", Georgia, Serif; 
 }
 
+.massage{
+    margin-top: 120px;
+    text-align: center;
+    font-size: 25px;
+    color: darkgreen;
+}
+
 /*  Квадраты. В линию сеткой. Ширина высота блока. Отступ от каждого блока.Фот в блоке.Цвет шрифта.Закруглен. Тень. Отступы внутри. */
 .products{
     display: inline-table;

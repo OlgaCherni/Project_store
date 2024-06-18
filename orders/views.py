@@ -64,6 +64,7 @@ def order(request):
                 product.quantity = product.quantity - item.quantity   # Количество на складе-заказ
                 product.save()
             get_user_basket.delete()                                 # Чистим корзину
+            request.session["basket_count"] = 0
             return redirect('main')
     return render(request, "order.html", {'form_key': form})
 
