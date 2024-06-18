@@ -73,3 +73,29 @@ a:active {
   color: #00adb8;
 }
 
+/* Хедер строка поиск. Корзина-кнопка подвердить. Отступ внешний.Внутренный к контенту. Шрифт размер, пошентру, цвет. Прозрачный бекграунд фон наследуем. Рамка толщина,спложная, цвет. Закругленная. Курсор-рука! */
+.search {
+  margin: 30px 5px;
+  padding: 3px;
+  font-size: 20px;
+  text-align: center;
+  color: rgb(50, 50, 50);;
+  background-color: inherit;
+  border: 2px solid rgb(50, 50, 50);;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* Кнопка поиск. Отступ внешний.Внутренный к контенту. Шрифт размер, пошентру, цвет. Рамка толщина,спложная, цвет. Закругленная. Заливка. Курсор-рука! */
+.btn_search{
+  margin: 20px 5px;
+  padding: 5px;
+  font-size: 20px;
+  text-align: center;
+  color: #185c18;
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 10px;
+  background: rgba(189, 188, 188, 0.989);
+  cursor: pointer;
+}
+

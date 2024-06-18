@@ -6,6 +6,15 @@
 {% block content %} 
 
 <div class="wraper">
+
+  {% if messages %}        <!-- Сообщение Товар добавлен в корзину. в кнопке -->
+  {% for message in messages %}
+    <div class="massage">
+      {{ message }}
+    </div>
+  {% endfor %}
+  {% endif %}
+
   {% for item in category_key %}     <!-- Перебираем по ключу из views,котовый выводит все отфильтрованные по категории товары из базы данных -->
 
       <a href="{% url "product_page" item.id %}">     <!-- Имя html.У каждого элементы в бд уникальный id(дается по умолчанию про создании) -->                                             
@@ -15,33 +24,32 @@
             <p class="info" >{{ item.name }}</p>
             <p class="info" >Цена: {{ item.price}} руб.</p>
 
-            {% if item.is_active %}       <!-- Если в наличии-V -->
-              <p class="info" >В наличии: &#10004;</p>
+            {% if item.quantity > 0 %}      
+              <p class="info" >В наличии: &#10004;</p>   <!-- В наличии- галочка V -->
             {% else %}
               <p class="info">Нет в наличии</p>
             {% endif %}
       </a> 
 
       <div>
-          <form method="POST"> {% csrf_token %} <!-- Кнопка добавить в рорзину.Количество. -->
-            <input type="hidden" value="{{item.name}}" name="get_id_produkt">
-            <button class="info btn_buy" type="submit">Добавить в корзину</button>  
-            <input type="number" class="info" name="quantity" min="1" max="100" placeholder="1" value=1 > <br> 
-          </form>
+          <form method="POST"> {% csrf_token %}  
+            <input type="hidden" value="{{item.name}}" name="get_id_product">
+              {% if item.quantity > 0 %}
+                <button class="info btn_buy" type="submit">Добавить в корзину</button>
+                <input class="info quantity" type="number" name="quantity" min="1" max="{{ item.quantity }}" value="1"> <br> <!-- Чтоб счетчик добавления в корзину не привышал max количество на складе -->
+              {% else %}
+                <button class="info btn_buy" type="submit" disabled>Добавить в корзину</button>
+                <input class="info quantity" type="number" name="quantity" disabled value=0> <br>
+              {% endif %} 
+            </form>
         </div>
       </div>
+      
     
     {% endfor %}
 
     <div>
-      {% if messages %} <!-- Сообщение Товар добавлен в корзину. в кнопке -->
-      {% for message in messages %}
-        <div>
-          {{ message }}
-        </div>
-      {% endfor %}
-      {% endif %}
-      <button class="btn"><a href="{%url 'main' %}">В каталог</a></button>
+      <button class="btn"><a href="{%url 'main' %}">НА ГЛАВНУЮ</a></button>
     </div> 
 
   </div>

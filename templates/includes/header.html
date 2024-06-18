@@ -13,13 +13,15 @@
             <ul class="item_nav">
                 <li>
                     <form role="search" action="{% url "search" %}" method="get" >                              <!-- ПОИСК ПО САЙТУ. url атрибут-куда делается запрос.url место где и имя. -->
-                        <input type="search" name="query" placeholder="Поиск" aria-label="Search">
-                        <button type="submit"> Поиск </button> 
+                        <input class="search" type="search" name="query" placeholder="Поиск" aria-label="Search">
+                        <button class="btn_search" type="submit"> Искать </button> 
                     </form>
                 </li>
-                <li class="item"><a href="{%url 'basket' %}">Корзина</a></li>
                 <li class="item"><a href="{%url 'registr' %}">Вход</a></li>
                 <li class="item"><a href="{%url 'logout' %}">Выход</a></li>
+                <li class="item"><a href="{%url 'basket' %}">Корзина</a></li>
+                {{ request.session.basket_count }}
+
 
             </ul>
         </nav>

@@ -1,3 +1,4 @@
+/* Categiry. About. Order */
 /* Фоновое изображение неподвижно fixed/scroll. Фон. Высота. font-family: "Raleway", Helvetica, Arial, sans-serif; */
 body{
     background-attachment: fixed;
@@ -6,12 +7,12 @@ body{
     font-family: "Times New Roman", Georgia, Serif; 
 }
 
-/*  Квадраны. В линию сеткой. Ширина высота блока. Отступ от каждого блока.Фот в блоке.Цвет шрифта.Закруглен. Тень. Отступы внутри. */
+/*  Квадраты. В линию сеткой. Ширина высота блока. Отступ от каждого блока.Фот в блоке.Цвет шрифта.Закруглен. Тень. Отступы внутри. */
 .products{
     display: inline-table;
     width: 400px;
     height: 400px;
-    margin-top: 50px;
+    margin-top: 60px;
     margin-left: 45px;
     background-color: aliceblue;
     border-radius: 10px;
@@ -36,46 +37,3 @@ body{
     font:bold;
 }
 
-/* КНОПКА Обычная.  Псевдоклассы:hover- активная во время наведения */
-.btn {
-    text-decoration: none;
-    display: inline-block;
-    color: white;
-    padding: 20px 30px;
-    margin: 10px 20px;
-    border-radius: 10px;
-    font-family: 'Montserrat', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    background-image: linear-gradient(to right, #9EEFE1 0%, #4830F0 51%, #9EEFE1 100%);
-    background-size: 200% auto;
-    box-shadow: 0 0 20px rgba(0, 0, 0, .1);
-    transition: .5s;
-}
-.btn:hover {
-    background-position: right center;
- }
-
-
-/* КНОПКA КУПИТЬ. Псевдоклассы :active- активная во время нажатия */
-.btn_buy {
-	background-color:#73a442;
-	padding: 7px;
-    margin-left: 30px;
-	position:relative;
-	font-family: 'Open Sans', sans-serif;
-	font-size: 12 px;
-	text-decoration:none;
-	color:#084417;
-	background-image: linear-gradient(bottom, rgb(76, 124, 28) 0%, rgb(129,212,51) 100%);
-	box-shadow: inset 0px 1px 0px #b2f17f, 0px 6px 0px #3d6f0d;
-	border-radius: 5px;
-    cursor: pointer;
-}
-.btn_buy:active {
-	top:7px;
-	background-image: linear-gradient(bottom, rgb(100,170,30) 100%, rgb(129,212,51) 0%);
-	box-shadow: inset 0px 1px 0px #b2f17f, inset 0px -1px 0px #3d6f0d;
-	color: #fbff04;
-	text-shadow: 0px 1px 1px rgb(30, 88, 17);
-}

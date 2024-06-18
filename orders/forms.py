@@ -1,6 +1,6 @@
 from django import forms
 
-# Создает форму в которую вводим данные пользователя делаюжего заказ
+# Создает форму в которую вводим данные пользователя, делающего заказ
 class FormOrder(forms.Form):
     name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Имя'})) 
     # second_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Фамилия'}))                       

@@ -10,7 +10,7 @@ def registration(request):
     user_form = FormRegistration()           
     if request.method == 'POST':
         user_form = FormRegistration(request.POST)       # создаю экземпляр формы                          
-        if user_form.is_valid():                        # проверка на валодацию. Если форма валидна
+        if user_form.is_valid():                        # проверка на валод. Если форма валидна
             fname = user_form['name']  
             fsecond_name = user_form['second_name']
             femail = user_form['email']
@@ -19,7 +19,7 @@ def registration(request):
             creat_user=Customer.objects.create(name=fname, second_name=fsecond_name, email=femail, password=fpassword)         # 1атрибут из модели 2из формы  
             creat_user.save()                     # сохранили в базе данных +-
             messages.success(request, f"Вы успешно зарегистрированы и вошли в аккаунт")     #  messages.success-успешно.сообщение. + Импорт!from django.contrib import messages!      
-            return redirect("main")                          # перенаправляем - имя урла 
+            return redirect("main")                          # перенаправлили-имя урла 
         else:
             return HttpResponse(f"Форма не валидна")
     else:

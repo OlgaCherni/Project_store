@@ -1,0 +1,78 @@
+/* CSS Общий для Categiry. Order. About. Подключен в base.html */
+/* Чтоб не схлопнулся. Хедер футер не мешает. Оступ по часовой сверху. basket.html product.html about.html*/
+.container_body {
+    margin-top: 130px;
+    margin-left: 50px;
+    margin-right: 50px;
+    min-height: 570px;
+  }
+
+/* Количество category.html и product.html. Отступ внешний.Внутренный к контенту. Шрифт размер, пошентру, цвет. Прозрачный бекграунд фон наследуем. Рамка толщина,спложная, цвет. Закругленная. Курсор-рука! */
+.quantity {
+    padding: 3px;
+    font-size: 20px;
+    text-align: center;
+    color: rgb(50, 50, 50);;
+    background-color: inherit;
+    border: 2px solid rgb(50, 50, 50);;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+/* КНОПКА ПЕРЕХОДА! Отсуп внешний.Внутренний. Рамка толщина,сплошна,цвет.Закругление.Шрифт.Растояние между буквами.Переливание.Блик.Тень.Время перетекания.Без подчеркивания.Псевдоклассы:hover-при наведении перетекает. */
+.btn {
+    margin: 40px 40px;
+    padding: 7px;
+    color: white;
+    border: 2px solid rgb(15, 0, 175);
+    border-radius: 15px;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    background-image: linear-gradient(to right, #9EEFE1 0%, #4830F0 51%, #9EEFE1 100%);
+    background-size: 200% auto;
+    box-shadow: 0 5px 20px rgba(1, 1, 10, .5);
+    transition: .5s;
+    text-decoration: none;
+}
+.btn:hover {
+    background-position: right center;
+ }
+
+
+
+/* КНОПКA КУПИТЬ. Псевдоклассы :active- активная во время нажатия */
+.btn_buy {
+	background-color:#73a442;
+	padding: 7px;
+    margin-left: 30px;
+	position:relative;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 12 px;
+	text-decoration:none;
+	color:#084417;
+	background-image: linear-gradient(bottom, rgb(76, 124, 28) 0%, rgb(129,212,51) 100%);
+	box-shadow: inset 0px 1px 0px #b2f17f, 0px 6px 0px #3d6f0d;
+	border-radius: 5px;
+    cursor: pointer;
+}
+.btn_buy:active {
+	top:7px;
+	background-image: linear-gradient(bottom, rgb(100,170,30) 100%, rgb(129,212,51) 0%);
+	box-shadow: inset 0px 1px 0px #b2f17f, inset 0px -1px 0px #3d6f0d;
+	color: #fbff04;
+	text-shadow: 0px 1px 1px rgb(30, 88, 17);
+}
+
+
+ /* about.html Bконка  */ 
+ .otstup{
+    margin: 40px 10px;
+}
+
+ /* about.html Текст  */ 
+ .text{
+    margin-left: 100px;
+    margin-right: 100px;
+    font-size: 20px;
+    letter-spacing: .2rem;
+}

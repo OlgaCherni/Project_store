@@ -1,19 +1,18 @@
+
 from django.contrib import admin
+from .models import Order, OrderItem
 
-# Register your models here.
-
-from .models import *
-
-
-@admin.register(ProductInBasket)
-class AdminUserBasket(admin.ModelAdmin):
-    list_display = ['user_basket','product','quantity','total_price']
-    list_display_links = ['user_basket','product','quantity','total_price']
-
+class OrderItemInline(admin.TabularInline):
+    model = OrderItem
+    extra = 0
 
 @admin.register(Order)
-class AdminOrder(admin.ModelAdmin):
-    list_display = ['product','name','phone','email','adres']
-    list_display_links = ['product','name','phone','email','adres']
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ('name', 'phone', 'email', 'adres')
+    inlines = [OrderItemInline]
 
-
+@admin.register(OrderItem)
+class OrderItemAdmin(admin.ModelAdmin):
+    list_display = ('order', 'product', 'name', 'price', 'quantity', 'created_timestamp')
+    list_filter = ('order', 'product')
+    search_fields = ('name',)

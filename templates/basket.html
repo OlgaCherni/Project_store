@@ -4,7 +4,7 @@
 
 {% block content %}                        <!-- Расширение шаблона(extends) Начало переносимого контента -->
     <div class="container_b">
-        <h2> КОРЗИНА <img  src={% static "media\basket.png" %} height="50"> </h2>
+        <h2> КОРЗИНА <img src={% static "media\basket.png" %} height="50"> </h2>
         
 
         <table>
@@ -42,25 +42,25 @@
             <tfoot>
                 <tr>
                     <th scope="row" colspan="2">Общая стоимость</th>
-                    <td colspan="2"> {{ price }} руб. </td>
+                    <th colspan="2"> {{ price }} руб. </th>
                 </tr>
             </tfoot>
         </table>
 
         <a class="btn_in" href="{%url 'order' %}">Подтвердить заказ</a>
-
+        
         <div>
             <form action="delete/" method="post"> {% csrf_token %}
                 <tr>
                     <td>
-                        <input type="submit" value="Удалить всё">
+                        <input class="input" type="submit" value="Удалить всё">
                     </td>
                 </tr>
             </form>
         </div>
 
         <div>
-            <button class="btn"><a href="{%url 'main' %}">В каталог </a></button>
+            <button class="btn"><a href="{%url 'main' %}">В каталог</a></button>
         </div>
 
     </div>

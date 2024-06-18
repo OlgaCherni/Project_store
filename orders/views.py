@@ -1,39 +1,8 @@
-from django.shortcuts import render
-
+from django.shortcuts import render, redirect
 from .models import *
 from shop.models import *
 from users.models import *
 from .forms import FormOrder
-
-from decimal import Decimal             # ____________
-from django.conf import settings
-from shop.models import Product         # ____________
-
-
-#  # ____________
-
-# from django.http import JsonResponse
-# from django.shortcuts import redirect, render
-# from django.template.loader import render_to_string
-# from .models import Cart
-# from .utils import get_user_carts
-# from shop.models import Products
-
-
-# # Корзина
-# def basket(request):
-#     user, _ = UserBasket.objects.get_or_create(user_kay=request.session.session_key)   # *
-#     lst_product = ProductInBasket.objects.filter(user_basket=user)
-    
-#     total_price=0
-#     for price in lst_product:
-#         total_price+=price.total_price
-#     if request.method == 'POST': 
-#         product=request.POST.get("product")
-#         id_product = Product.objects.get(id=product)
-#         get_product = ProductInBasket.objects.filter(product = id_product)
-#         get_product.delete()
-#     return render(request, "basket.html", {"products":lst_product,'price':total_price})
 
 
 # Корзина
@@ -51,7 +20,9 @@ def basket(request):
         get_product.delete()
         lst_product = ProductInBasket.objects.filter(user_basket=user)   # цена без удаленного
         total_price -= product.price
+        product_count(lst_product, request)                                                       # Счетчик корзины
     return render(request, "basket.html", {"products":lst_product,'price':total_price})
+
 
 # Очистить корзину
 def delete_all(request):
@@ -60,19 +31,46 @@ def delete_all(request):
     products.delete()
     lst_product = ProductInBasket.objects.filter(user_basket=user)
     total_price = 0
+    request.session["basket_count"] = user.productinbasket_set.count()                            # Счетчик корзины
     return render(request, "basket.html", {"products":lst_product,'price':total_price})
 
 
 # Оформлене заказа
 def order(request):
     form = FormOrder()
-    return render(request, "order.html", {'form_key':form})
+    user_key = request.session.session_key
+    get_basket = UserBasket.objects.get(user_kay=user_key)
+    get_user_basket = ProductInBasket.objects.filter(user_basket=get_basket)
+    if request.method == 'POST':
+        form = FormOrder(request.POST)
+        if form.is_valid():
+            # Создаем новый заказ
+            order = Order.objects.create(
+                name = form.cleaned_data["name"],
+                phone = form.cleaned_data["phone"],
+                email = form.cleaned_data["email"],
+                adres = form.cleaned_data["adres"],
+            )
+            # Создаем элементы заказа
+            for item in get_user_basket:
+                OrderItem.objects.create(
+                    order=order,
+                    product=item.product,
+                    name=item.product.name,
+                    price=item.product.price,
+                    quantity=item.quantity
+                )
+                product = item.product                                  
+                product.quantity = product.quantity - item.quantity   # Количество на складе-заказ
+                product.save()
+            get_user_basket.delete()                                 # Чистим корзину
+            return redirect('main')
+    return render(request, "order.html", {'form_key': form})
 
 
-# Удалить всю корзину
-def order(request):
-    form = FormOrder()
-    return render(request, "order.html", {'form_key':form})
-
-
-
+# Счетчик корзины
+def product_count(lst_product, request):
+    count = 0
+    for item in lst_product:
+        count += item.quantity
+    request.session["basket_count"] = count

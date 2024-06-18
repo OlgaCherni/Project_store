@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 
-class Сategories(models.Model):                                                                 #-С 3 категории: сноуборд лыжи аксессуары. Наследуемся от встроеного класса.               
+class Сategories(models.Model):                                                                 # 3 категории: сноуборд лыжи аксессуары. Наследуемся от встроеного класса.               
     namec = models.CharField(max_length=80, verbose_name= "Категория товара")
 
     class Meta:                                              # В админ можно вносить коррективы в название класса Категории
@@ -15,7 +15,7 @@ class Сategories(models.Model):                                                
 
 
 class Product(models.Model):                                                                               #Один ко многим. Разные товары по 3 категориям.
-    сategories = models.ForeignKey(Сategories, on_delete = models.CASCADE, blank=False, default=True)    
+    categories = models.ForeignKey(Сategories, on_delete = models.CASCADE, blank=False, default=True)     
     name = models.CharField(max_length=150, verbose_name="Наименование")
     image = models.ImageField(upload_to ='static\imagebd', verbose_name="Картинка", null=True, blank=True)      # 1(5)шаг для отображения на странице картинок из базы данных                                                         
     description = models.TextField(max_length=900, blank=True, verbose_name="Описание товара") 

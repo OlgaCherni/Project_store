@@ -5,7 +5,7 @@
 
  {% block content %}                        <!-- Расширение шаблона(extends) Начало переносимого контента -->
 
-    <div class="vitrina">
+    <div class="vitrina container_body">
         <div class="wrapper">
 
             <div class="name">
@@ -21,20 +21,25 @@
             <div class="info_d">
                 {{product.description}}
             </div>
-
+         
 
             <div>
-            <form method="POST"> {% csrf_token %}                                       <!-- Кнопка добавления в корзину. С выбором количества -->
-                <input type="hidden" value="{{item.name}}" name="get_id_product">
-                <button class="info btn_buy" type="submit">Добавить в корзину</button>  
-                <input type="number" name="quantity" min="1" max="100" placeholder="1" value=1 > <br> 
-            </form>
+                <form method="POST"> {% csrf_token %}  
+                    <input type="hidden" value="{{product.name}}" name="get_id_product">
+                      {% if product.quantity > 0  %}
+                        <button class="info btn_buy" type="submit">Добавить в корзину</button>
+                        <input class="info quantity" type="number" name="quantity" min="1" max="{{ product.quantity }}" value="1">  <br>           <!-- Чтоб счетчик добавления в корзину не привышал max количество на складе -->
+                      {% else %}
+                        <button class="info btn_buy" type="submit" disabled>Добавить в корзину</button>
+                        <input class="info quantity" type="number" name="quantity" disabled value=0> <br>
+                      {% endif %} 
+                </form>
             </div>
 
         </div>
 
             <div>
-                <button class="btn"><a href="{%url 'main' %}">В каталог </a></button>
+                <button class="btn"><a href="{%url 'main' %}">В каталог</a></button>
             </div>
 
     </div>

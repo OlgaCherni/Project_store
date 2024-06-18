@@ -38,7 +38,7 @@ urlpatterns = [
     path("login/", user.log, name="login"),                                             # Логин вход 
     path("logout/", LogoutView.as_view, name="logout"),                                 # Выход 
     
-    path("basket/", order.basket, name="basket"),                                       # Корзина Изменить содержимое карзины
+    path("basket/", order.basket, name="basket"),                                       # Корзина
     path("order/", order.order, name="order"),                                          # Заказ
     path("basket/delete/", order.delete_all, name="delete_all"),                        # Очистить корзину   
 ]

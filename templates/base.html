@@ -6,12 +6,13 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="{% static "CSS/style_main.css" %}" />             <!-- +CSS  Главная -->
-    <link rel="stylesheet" href="{% static "CSS/style_category.css" %}" />                <!-- +CSS  Для бордов, лыж, аксесуаров -->    
-    <link rel="stylesheet" href="{% static "CSS/style_product.css" %}" />          <!-- +CSS Один продукт -->
-    <link rel="stylesheet" href="{% static "CSS/style_basket.css" %}" />           <!-- +CSS Корзина-->
+    <link rel="stylesheet" href="{% static "CSS/style_main.css" %}" />         <!-- +CSS  Главная -->
+    <link rel="stylesheet" href="{% static "CSS/style_category.css" %}" />     <!-- +CSS  Для бордов, лыж, аксесуаров -->    
+    <link rel="stylesheet" href="{% static "CSS/style_product.css" %}" />      <!-- +CSS Один продукт -->
+    <link rel="stylesheet" href="{% static "CSS/style_basket.css" %}" />       <!-- +CSS Корзина -->
     <link rel="stylesheet" href="{% static "CSS/style_header.css" %}" />
     <link rel="stylesheet" href="{% static "CSS/style_footer.css" %}" />
+    <link rel="stylesheet" href="{% static "CSS/style_base.css" %}" />       <!-- +CSS Общий -->
     <title>base</title>
 </head>
 <body>
@@ -19,7 +20,7 @@
     {% include "includes/header.html" %}                 <!-- встявляем header -->
 
     <div>
-        {% block content %}                <!-- Расширяем шаблон(extends). Перетаскиваем сноуборды,лыжи,аксессуары. Меин. Один продукт -->
+        {% block content %}                        <!-- Расширяем шаблон(extends). Перетаскиваем сноуборды,лыжи,аксессуары. Меин. Один продукт -->
         {% endblock %}
     </div>
 

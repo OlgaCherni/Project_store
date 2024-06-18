@@ -3,7 +3,6 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Times New Roman", Georgia, Serif;
-
 }
 
 /* Все элементы сеткой в строку. Отступ всего тела сверху.  */
@@ -16,7 +15,7 @@ body{
 .container_b{
   margin-top: 120px;
   margin-left: 100px;
-  min-height: 475px;
+  min-height: 570px;
 }
 
 /* Таблица. И каждый столбик. */
@@ -66,40 +65,28 @@ td {
   height: 90px;
 }
 
-/* кнопка как инпут. Размер шрифта. Выравнивание. Прозрачный бекграунд фон наследуем. Граница толщина2,спложная голубая.Закругленная. Растояние сверху блока. Курсор-рука! */
-.btn_in{
-  margin: 50px 10px;
+/* Корзина-кнопка подвердить. Отступ внешний.Внутренный к контенту. Шрифт размер, пошентру, цвет. Заливка. Рамка толщина,спложная, цвет. Закругленная. Курсор-рука! */
+.btn_in {
+  margin: 50px 5px;
+  padding: 5px;
   font-size: 20px;
   text-align: center;
-  background-color: inherit;
+  color: #185c18;
+  background: rgba(206, 206, 206, 0.989);
   border: 2px solid rgb(0, 0, 0);
   border-radius: 10px;
-  background: rgb(194, 194, 194);
   cursor: pointer;
 }
 
-/* Две кнопки внизу. Размер шрифта. Выравнивание. Прозрачный бекграунд фон наследуем. Граница толщина2,спложная голубая.Закругленная. Растояние сверху блока. Курсор-рука! */
-input{
-  margin: 30px 10px;
-  font-size: 20px;
-  text-align: center;
-  background-color: inherit;
-  border: 2px solid rgb(0, 0, 0);
-  border-radius: 10px;
-  background: rgb(194, 194, 194);
-  cursor: pointer;
-}
-
-/* КНОПКА. Обводка толщина,сплошная,цвет. Заливка. Отступ слева. Толщина шрифта. Текст в центре. Закругление. Внутрений отстут от шрифта. Курсор-рука! */
-.btn{
-  border: 2px solid rgb(11, 11, 87);      
-  background-color: rgba(113, 148, 218, 0.718);
-  margin-left: 100px;
-  border-radius: 25px;
-  font-size: 25px;
-  text-align: center;
-  color: darkblue;
+/* Корзина-кнопка удалить. Корзина-кнопка подвердить. Отступ внешний.Внутренный к контенту. Шрифт размер, пошентру, цвет. Прозрачный бекграунд фон наследуем. Рамка толщина,спложная, цвет. Закругленная. Курсор-рука! */
+.input {
+  margin: 30px 5px;
   padding: 3px;
-  text-decoration: none;
+  font-size: 20px;
+  text-align: center;
+  color: #07008b;
+  background-color: inherit;
+  border: 2px solid rgb(0, 7, 100);
+  border-radius: 10px;
   cursor: pointer;
 }
