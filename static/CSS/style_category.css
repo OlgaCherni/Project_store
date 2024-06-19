@@ -10,8 +10,8 @@ body{
 .massage{
     margin-top: 120px;
     text-align: center;
-    font-size: 25px;
-    color: darkgreen;
+    font-size: 30px;
+    color: rgb(0, 123, 0);
 }
 
 /*  Квадраты. В линию сеткой. Ширина высота блока. Отступ от каждого блока.Фот в блоке.Цвет шрифта.Закруглен. Тень. Отступы внутри. */

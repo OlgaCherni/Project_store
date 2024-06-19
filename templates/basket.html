@@ -1,67 +1,71 @@
-{% extends "base.html" %}                  <!-- Расширение шаблона(extends). Указываем название базавого, куда отправляем контент -->
+{% extends "base.html" %} <!-- Расширение шаблона(extends). Указываем название базавого, куда отправляем контент -->
 
-{% load static %}               <!-- +CSS -->
+{% load static %} <!-- +CSS -->
 
-{% block content %}                        <!-- Расширение шаблона(extends) Начало переносимого контента -->
-    <div class="container_b">
-        <h2> КОРЗИНА <img src={% static "media\basket.png" %} height="50"> </h2>
-        
+{% block content %} <!-- Расширение шаблона(extends) Начало переносимого контента -->
 
-        <table>
-            <caption>
-                Ваши заказы в корзине:
-            </caption>
+<div class="container_b">
+    <h2> КОРЗИНА <img src={% static "media\basket.png" %} height="50"> </h2>
 
-            <thead>
-                <tr>
-                    <th scope="col">Изображение</th>
-                    <th scope="col">Категория</th>
-                    <th scope="col">Наименование товара</th>
-                    <th scope="col">Количество</th>
-                    <th scope="col">Цена</th>
-                    <th scope="col">Удалить элемент</th>
-                </tr>
-            </thead>
+    <table>
+        <caption style="font-size: 25px;">
+            Ваши заказы в корзине:
+        </caption>
 
-            <tbody>
-                {% for item in products %}
-                <tr>
-                    <td><img class="img_bsc" src="{{ item.product.image.url }}" alt="{{ item.product.name }}"></td>
-                    <th scope="col"> {{ item.product.сategories}}</th>
-                    <th scope="col"> {{ item.product.name }} </th>
-                    <td> {{ item.quantity }} шт. </td>
-                    <td> {{ item.total_price }} руб.</td>
-                    <td><form method="POST"> {% csrf_token %}
-                    <input type="hidden" name="product" value="{{item.product.id}}">
-                <button type="submit">Удалить</button> </form></td>
-                </tr>
-                <br>
-                {% endfor %}
-            </tbody>
+        <thead>
+            <tr>
+                <th scope="col">Изображение</th>
+                <th scope="col">Категория</th>
+                <th scope="col">Наименование товара</th>
+                <th scope="col">Количество</th>
+                <th scope="col">Цена</th>
+                <th scope="col">Удалить элемент</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in products %}
 
-            <tfoot>
-                <tr>
-                    <th scope="row" colspan="2">Общая стоимость</th>
-                    <th colspan="2"> {{ price }} руб. </th>
-                </tr>
-            </tfoot>
-        </table>
+            <tr>
+                <td><img class="img_bsc" src="{{ item.product.image.url }}" alt="{{ item.product.name }}"></td>
+                <th scope="col"> {{ item.product.сategories}}</th>
+                <th scope="col"> {{ item.product.name }} </th>
+                <td> {{ item.quantity }} шт. </td>
+                <td> {{ item.total_price }} руб.</td>
+                <td>
+                    <form method="POST"> {% csrf_token %}
+                        <input type="hidden" name="product" value="{{item.product.id}}">
+                        <button class="btn_delete" type="submit">Удалить</button>
+                    </form>
+                </td>
+            </tr>
+            <br>
+            {% endfor %}
+        </tbody>
 
-        <a class="btn_in" href="{%url 'order' %}">Подтвердить заказ</a>
-        
-        <div>
-            <form action="delete/" method="post"> {% csrf_token %}
-                <tr>
-                    <td>
-                        <input class="input" type="submit" value="Удалить всё">
-                    </td>
-                </tr>
-            </form>
-        </div>
+        <tfoot>
+            <tr>
+                <th scope="row" colspan="2">Общая стоимость</th>
+                <th colspan="2"> {{ price }} руб. </th>
+            </tr>
+        </tfoot>
+    </table>
 
-        <div>
-            <button class="btn"><a href="{%url 'main' %}">В каталог</a></button>
-        </div>
+    <a class="btn_in" href="{%url 'order' %}">Подтвердить заказ</a>
 
+    <div>
+        <form action="delete/" method="post"> {% csrf_token %}
+            <tr>
+                <td>
+                    <input class="btn_delete" type="submit" value="Удалить всё">
+                </td>
+            </tr>
+        </form>
     </div>
+
+    <div>
+        <button class="btn"><a href="{%url 'main' %}">В каталог</a></button>
+    </div>
+
+
+</div>
 {% endblock content %} <!-- Расширение шаблона(extends) Конец переносимого контента -->

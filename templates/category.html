@@ -7,7 +7,7 @@
 
 <div class="wraper">
 
-  {% if messages %}        <!-- Сообщение Товар добавлен в корзину. в кнопке -->
+  {% if messages %}        <!-- Сообщение Товар добавлен в корзину. ИЛИ *Недостаточное количество товара на складе!-->
   {% for message in messages %}
     <div class="massage">
       {{ message }}

@@ -5,8 +5,19 @@
 
  {% block content %}                        <!-- Расширение шаблона(extends) Начало переносимого контента -->
 
+
     <div class="vitrina container_body">
         <div class="wrapper">
+            
+            <div>
+                {% if messages %}                 <!-- *Недостаточное количество товара на складе! -->
+                {% for message in messages %}
+                <div class="massage">
+                    {{ message }}
+                </div>
+                {% endfor %}
+                {% endif %}
+            </div>
 
             <div class="name">
                 <p>Категория: {{product.сategories}}</p>

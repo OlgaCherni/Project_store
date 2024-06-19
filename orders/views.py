@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.shortcuts import render, redirect
 from .models import *
 from shop.models import *
@@ -15,7 +16,7 @@ def basket(request):
         total_price+=price.total_price
     if request.method == 'POST': 
         id_product=request.POST.get("product")
-        product = Product.objects.get(id=id_product)
+        product = Product.objects.get(id=id_product)    
         get_product = ProductInBasket.objects.filter(product = product)  # удаление элемента
         get_product.delete()
         lst_product = ProductInBasket.objects.filter(user_basket=user)   # цена без удаленного
@@ -43,8 +44,7 @@ def order(request):
     get_user_basket = ProductInBasket.objects.filter(user_basket=get_basket)
     if request.method == 'POST':
         form = FormOrder(request.POST)
-        if form.is_valid():
-            # Создаем новый заказ
+        if form.is_valid():     # Создаем новый заказ
             order = Order.objects.create(
                 name = form.cleaned_data["name"],
                 phone = form.cleaned_data["phone"],
@@ -53,6 +53,7 @@ def order(request):
             )
             # Создаем элементы заказа
             for item in get_user_basket:
+
                 OrderItem.objects.create(
                     order=order,
                     product=item.product,
@@ -60,14 +61,14 @@ def order(request):
                     price=item.product.price,
                     quantity=item.quantity
                 )
-                product = item.product                                  
-                product.quantity = product.quantity - item.quantity   # Количество на складе-заказ
+                product = item.product  
+
+                product.quantity = product.quantity - item.quantity   # Количество на складе минус Количество в заказе
                 product.save()
             get_user_basket.delete()                                 # Чистим корзину
             request.session["basket_count"] = 0
             return redirect('main')
     return render(request, "order.html", {'form_key': form})
-
 
 # Счетчик корзины
 def product_count(lst_product, request):

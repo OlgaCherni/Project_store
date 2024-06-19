@@ -18,7 +18,7 @@
                     </form>
                 </li>
                 <li class="item"><a href="{%url 'registr' %}">Вход</a></li>
-                <li class="item"><a href="{%url 'logout' %}">Выход</a></li>
+                {% comment %} <li class="item"><a href="{%url 'logout' %}">Выход</a></li> {% endcomment %}
                 <li class="item"><a href="{%url 'basket' %}">Корзина</a></li>
                 {{ request.session.basket_count }}
 
