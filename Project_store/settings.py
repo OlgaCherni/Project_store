@@ -133,3 +133,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_DIR = os.path.join(BASE_DIR, 'media')                  # 2(5)шаг. для отображения на странице картинок из базы данных
 MEDIA_ROOT = MEDIA_DIR                                       # 2(5)шаг.где будет находиться добавится.  ил без 1 MEDIA_ROOT = BASE_DIR / 'media' 8(2:41)
 MEDIA_URL = '/media/'                                        # 2(5)шаг. для показа url
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend' # Сообщение от магазина на почту
+EMAIL_HOST = 'smtp.mail.ru'
+EMAIL_USE_TLS = False
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True
+EMAIL_HOST_USER = 'olga1minsk@mail.ru'                        # Почта
+EMAIL_HOST_PASSWORD = 'Xxtg47deDwDMdkAepfUr'                  # Пароль для внешнего приложения сгенерирован в аккаунте.

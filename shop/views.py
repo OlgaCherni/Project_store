@@ -60,7 +60,7 @@ def post(request, product):
             print(f"Товар {new_basket.product} добавлен в корзину!")
     product_count(user, request)  # Счетчик корзины
 
-
+# Валидация. Не дает добавить товар в корзину, если остатка меньше, чем на складе. Недостаточное количество товара на складе!
 def validate(product, get_basket, request):
     valid = True
     if get_basket:

@@ -1,4 +1,6 @@
+from django.conf import settings
 from django.contrib import messages
+from django.core.mail import EmailMessage, get_connection
 from django.shortcuts import render, redirect
 from .models import *
 from shop.models import *
@@ -65,10 +67,35 @@ def order(request):
 
                 product.quantity = product.quantity - item.quantity   # Количество на складе минус Количество в заказе
                 product.save()
+            send_email(request, order, get_user_basket)              # *Сообщение на почту
             get_user_basket.delete()                                 # Чистим корзину
             request.session["basket_count"] = 0
             return redirect('main')
     return render(request, "order.html", {'form_key': form})
+
+# *Сообщение на почту
+def send_email(request, order, get_user_basket):
+    if request.method == "POST":
+        with get_connection(
+                host=settings.EMAIL_HOST,
+                port=settings.EMAIL_PORT,
+                username=settings.EMAIL_HOST_USER,
+                password=settings.EMAIL_HOST_PASSWORD,
+                use_tls=settings.EMAIL_USE_TLS
+        ) as connection:
+            subject = "Ваш заказ из магазина SnowWave оформлен успешно!"
+            email_from = settings.EMAIL_HOST_USER
+            recipient_list = [order.email]
+            message = create_mail_message(get_user_basket)
+            EmailMessage(subject, message, email_from, recipient_list, connection=connection).send()
+
+
+def create_mail_message(get_user_basket):
+    message = ""
+    for item in get_user_basket:
+        message += "Ваш заказ: " + item.product.name + ". Благодарим за сотрудничество!" +"\n"
+    return message
+
 
 # Счетчик корзины
 def product_count(lst_product, request):
